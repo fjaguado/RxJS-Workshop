@@ -13,7 +13,7 @@ export interface Link {
   styleUrls: ['./side-navbar.component.scss'],
 })
 export class SideNavbarComponent {
-  @Output() selectedTitle = new EventEmitter();
+  @Output() selectedTitle = new EventEmitter<Link>();
 
   public links: Link[] = [
     {
@@ -180,9 +180,9 @@ export class SideNavbarComponent {
     },
   ];
 
-  public doSelectTitle({ isSelectable, title }: Link): void {
-    if (isSelectable) {
-      this.selectedTitle.emit(title);
+  public doSelectTitle(link: Link): void {
+    if (link.isSelectable) {
+      this.selectedTitle.emit(link);
     }
   }
 }

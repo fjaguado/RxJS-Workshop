@@ -10,7 +10,7 @@
           aria-current="page"
           href="#{{ link.url }}"
           data-bs-toggle="collapse"
-          (click)="selectedTitle(link)"
+          (click)="doSelectTitle(link)"
         >
           <span data-feather="home" class="align-text-bottom"></span>
           {{ link.title }}
@@ -18,11 +18,9 @@
         <div class="collapse" [id]="link.url" style="margin-left: 15px">
           <div *ngFor="let childLink of link.childLinks">
             <a
-              class="nav-link active"
+              class="nav-link childLink"
               aria-current="page"
-              [href]="childLink.url"
-              style="color: #3fb087"
-              (click)="selectedTitle(link)"
+              (click)="doSelectTitle(childLink)"
             >
               <span data-feather="home" class="align-text-bottom"></span>
               {{ childLink.title }}
