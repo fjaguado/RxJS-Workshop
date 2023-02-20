@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Link } from './components/menu/side-navbar/side-navbar.component';
+import { Link } from './models/menu.model';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -13,6 +13,6 @@ export class AppComponent {
 
   public setTitle({ title, url }: Link): void {
     this.selectedItem = title;
-    this.router.navigate([url]);
+    this.router.navigate([`/${url}`]);
   }
 }

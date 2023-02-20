@@ -43,7 +43,11 @@
   font-size: 0.75rem;
 }
 
-.childLink {
-  color: #3fb087;
+.parent-link {
   cursor: pointer;
+}
+
+.child-link {
+  cursor: pointer;
+  color: #3fb087;
 }

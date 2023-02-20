@@ -6,9 +6,9 @@
     <ul class="nav flex-column">
       <li class="nav-item" *ngFor="let link of links">
         <a
-          class="nav-link active"
+          class="nav-link active parent-link"
           aria-current="page"
-          href="#{{ link.url }}"
+          [attr.data-bs-target]="getDropdownTarget(link)"
           data-bs-toggle="collapse"
           (click)="doSelectTitle(link)"
         >
@@ -18,7 +18,7 @@
         <div class="collapse" [id]="link.url" style="margin-left: 15px">
           <div *ngFor="let childLink of link.childLinks">
             <a
-              class="nav-link childLink"
+              class="nav-link child-link"
               aria-current="page"
               (click)="doSelectTitle(childLink)"
             >

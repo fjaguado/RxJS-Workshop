@@ -1,7 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ROUTES } from './models/menu.model';
 
 const routes: Routes = [
+  {
+    path: ROUTES.BASIC_DEFINITIONS,
+    loadChildren: () =>
+      import('./components/basic-definitions/basic-definitions.module').then(
+        (m) => m.BasicDefinitionsModule
+      ),
+  },
   {
     path: '**',
     redirectTo: '',

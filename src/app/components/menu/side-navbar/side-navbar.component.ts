@@ -1,11 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-
-export interface Link {
-  title: string;
-  isSelectable: boolean;
-  url?: string;
-  childLinks?: Link[];
-}
+import { Link, ROUTES } from '../../../models/menu.model';
 
 @Component({
   selector: 'app-side-navbar',
@@ -18,20 +12,25 @@ export class SideNavbarComponent {
   public links: Link[] = [
     {
       title: 'Basic definitions',
+      url: ROUTES.BASIC_DEFINITIONS,
       isSelectable: true,
+      isParent: true,
     },
     {
       title: 'Subjects',
+      url: ROUTES.SUBJECTS,
       isSelectable: true,
+      isParent: true,
     },
     {
       title: 'Creation operators',
       url: 'collapseChild-creation-operators',
+      isParent: true,
       isSelectable: false,
       childLinks: [
         {
           title: 'of / from / fromEvent',
-          url: 'of-from-fromevent',
+          url: ROUTES.OF_FROM_FROMEVENT,
           isSelectable: true,
         },
       ],
@@ -39,41 +38,42 @@ export class SideNavbarComponent {
     {
       title: 'Combination operators',
       url: 'collapseChild-combination-operators',
+      isParent: true,
       isSelectable: false,
       childLinks: [
         {
           title: 'combineLatest',
-          url: 'combine-latest',
+          url: ROUTES.COMBINE_LATEST,
           isSelectable: true,
         },
         {
           title: 'withLatestFrom',
-          url: 'with-latestFrom',
+          url: ROUTES.WITH_LATEST_FROM,
           isSelectable: true,
         },
         {
           title: 'concat',
-          url: 'concat',
+          url: ROUTES.CONCAT,
           isSelectable: true,
         },
         {
           title: 'merge',
-          url: 'merge',
+          url: ROUTES.MERGE,
           isSelectable: true,
         },
         {
           title: 'startWith',
-          url: 'start-with',
+          url: ROUTES.START_WITH,
           isSelectable: true,
         },
         {
           title: 'forkJoin',
-          url: 'fork-join',
+          url: ROUTES.FORK_JOIN,
           isSelectable: true,
         },
         {
           title: 'zip',
-          url: 'zip',
+          url: ROUTES.ZIP,
           isSelectable: true,
         },
       ],
@@ -81,31 +81,32 @@ export class SideNavbarComponent {
     {
       title: 'Filtering operators',
       url: 'collapseChild-filtering-operators',
+      isParent: true,
       isSelectable: false,
       childLinks: [
         {
           title: 'debounceTime',
-          url: 'debounce-time',
+          url: ROUTES.DEBOUNCE_TIME,
           isSelectable: true,
         },
         {
           title: 'distinctUntilChanged',
-          url: 'distinct-until-changed',
+          url: ROUTES.DISTINCT_UNTIL_CHANGED,
           isSelectable: true,
         },
         {
           title: 'distinctUntilKeyChanged',
-          url: 'distinct-until-key-changed',
+          url: ROUTES.DISTINCT_UNTIL_KEY_CHANGED,
           isSelectable: true,
         },
         {
           title: 'filter',
-          url: 'filter',
+          url: ROUTES.FILTER,
           isSelectable: true,
         },
         {
           title: 'takeUntil',
-          url: 'takeUntil',
+          url: ROUTES.TAKE_UNTIL,
           isSelectable: true,
         },
       ],
@@ -113,11 +114,12 @@ export class SideNavbarComponent {
     {
       title: 'Multicasting operators',
       url: 'collapseChild-multicasting-operators',
+      isParent: true,
       isSelectable: false,
       childLinks: [
         {
           title: 'shareReplay',
-          url: 'share-replay',
+          url: ROUTES.SHARE_REPLAY,
           isSelectable: true,
         },
       ],
@@ -125,11 +127,12 @@ export class SideNavbarComponent {
     {
       title: 'Error handling operators',
       url: 'collapseChild-error-handling-operators',
+      isParent: true,
       isSelectable: false,
       childLinks: [
         {
           title: 'catchError',
-          url: 'catch-error',
+          url: ROUTES.CATCH_ERROR,
           isSelectable: true,
         },
       ],
@@ -137,26 +140,27 @@ export class SideNavbarComponent {
     {
       title: 'Transformation operators',
       url: 'collapseChild-transformation-operators',
+      isParent: true,
       isSelectable: false,
       childLinks: [
         {
           title: 'map',
-          url: 'map',
+          url: ROUTES.MAP,
           isSelectable: true,
         },
         {
           title: 'concatMap',
-          url: 'concat-map',
+          url: ROUTES.CONCAT_MAP,
           isSelectable: true,
         },
         {
           title: 'exhaustMap',
-          url: 'exhaust-map',
+          url: ROUTES.EXHAUST_MAP,
           isSelectable: true,
         },
         {
           title: 'switchMap',
-          url: 'switch-map',
+          url: ROUTES.SWITCH_MAP,
           isSelectable: true,
         },
       ],
@@ -164,16 +168,17 @@ export class SideNavbarComponent {
     {
       title: 'Utility operators',
       url: 'collapseChild-utility-operators',
+      isParent: true,
       isSelectable: false,
       childLinks: [
         {
           title: 'tap',
-          url: 'tap',
+          url: ROUTES.TAP,
           isSelectable: true,
         },
         {
           title: 'finalize',
-          url: 'finalize',
+          url: ROUTES.FINALIZE,
           isSelectable: true,
         },
       ],
@@ -181,8 +186,12 @@ export class SideNavbarComponent {
   ];
 
   public doSelectTitle(link: Link): void {
-    if (link.isSelectable) {
+    if (link.isSelectable || (link.isParent && link.isSelectable)) {
       this.selectedTitle.emit(link);
     }
+  }
+
+  public getDropdownTarget({ isParent, url }: Link): string {
+    return !isParent ? '' : `#${url}`;
   }
 }
