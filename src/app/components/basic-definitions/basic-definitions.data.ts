@@ -171,3 +171,101 @@ export const OBSERVER_SECTION: SECTION[] = [
     `,
   },
 ];
+
+export const OPERATORS_SECTION: SECTION[] = [
+  {
+    title: '',
+    body: `
+    <p>
+      Operators are basically functions that interact with streams of data. There are two kinds of operators.
+    </p>
+    `,
+  },
+  {
+    title: 'Pipeable Operators',
+    body: `
+    <p>
+      It's essentially a pure function which takes one Observable as input and generates another Observable as output. Subscribing to the output Observable will also subscribe to the input Observable.
+    </p>
+    <p>
+      These operators can be piped to Observables using the following syntax: 
+    </p>
+    <code>
+    <pre>
+    observable.pipe(operator())
+    </pre>
+    </code>
+    <p>
+      When called, they do not change the existing Observable instance, instead, <b>they return a new Observable</b> whose subscription logic is based on the first Observable.
+    </p>
+    <p>
+      Pipeable operators are functions, so they could be used like ordinary functions:
+    </p>
+    <code>
+    <pre>
+    op()(obs)
+    </pre>
+    </code>
+    <p>
+      but in practice, there tend to be many of them convolved together, and quickly become unreadable:
+    </p>
+    <code>
+    <pre>
+    op4()(op3()(op2()(op1()(obs))))
+    </pre>
+    </code>
+    <p>
+      For that reason, Observables have a method called <b>.pipe()</b> that accomplishes the same thing while being much easier to read:
+    </p>
+    <code>
+    <pre>
+    obs.pipe(op1(), op2(), op3(), op4());
+    </pre>
+    </code>
+    `,
+  },
+  {
+    title: 'Creation Operators',
+    body: `
+    <p>
+      These are the other kind of operator, which can be called as standalone functions to create a new Observable. </p> 
+    <p>
+      For example: <b>of(1, 2, 3)</b> creates an observable that will emit 1, 2, and 3, one right after another.
+    </p> 
+    `,
+  },
+  {
+    title: 'Higher-order Observables',
+    body: `
+    <p>
+      Observables most commonly emit ordinary values like strings and numbers, but surprisingly often, it is necessary to handle Observables of Observables, so-called higher-order Observables.
+    </p> 
+    <p>
+      For example, imagine you had an Observable emitting strings that were the URLs of files you wanted to see. The code might look like this:
+    </p> 
+    <code>
+    <pre>
+    const fileObservable = urlObservable.pipe(
+      map(url => http.get(url))
+    );
+    </pre>
+    </code>
+    <p>
+      <b>http.get()</b> returns an Observable (of string or string arrays probably) for each individual URL. Now you have an Observable of Observables, a higher-order Observable.
+    </p> 
+    <p>
+      <i>But how do you work with a higher-order Observable?</i> Typically, by <b>flattening</b> (by somehow converting a higher-order Observable into an ordinary Observable).
+    </p>
+    <p>
+      For example, we can use a high-order operator <b>concatMap()</b> that will execute both requests in a consecutive order:
+    </p>
+    <code>
+    <pre>
+    const fileObservable = urlObservable.pipe(
+      concatMap(url => http.get(url))
+    );
+    </pre>
+    </code>
+    `,
+  },
+];
