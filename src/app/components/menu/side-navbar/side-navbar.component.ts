@@ -37,13 +37,13 @@ export class SideNavbarComponent {
           isSelectable: true
         },
         {
-          title: 'Subscription',
-          url: ROUTES.SUBSCRIPTION,
+          title: 'Marble diagram',
+          url: ROUTES.MARBLE_DIAGRAM,
           isSelectable: true
         },
         {
-          title: 'Marble diagram',
-          url: ROUTES.MARBLE_DIAGRAM,
+          title: 'Subscription',
+          url: ROUTES.SUBSCRIPTION,
           isSelectable: true
         },
       ]

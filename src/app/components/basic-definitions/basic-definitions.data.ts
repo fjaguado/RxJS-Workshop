@@ -269,3 +269,24 @@ export const OPERATORS_SECTION: SECTION[] = [
     `,
   },
 ];
+
+export const MARBLE_DIAGRAM_SECTION: SECTION[] = [
+  {
+    title: '',
+    body: `
+    <p>
+      To explain how operators work, textual descriptions are often not enough. Many operators are related to time, they may for instance delay, sample, throttle, or debounce value emissions in different ways. Diagrams are often a better tool for that. 
+    </p>
+    <p>
+      Marble Diagrams are visual representations of how operators work, and include the input Observable(s), the operator and its parameters, and the output Observable.
+    </p>
+    </p>
+    <p>
+      In a marble diagram, <b>time flows to the right</b>, and the diagram describes how values ("marbles") are emitted on the Observable execution.
+    </p>
+    <div class="d-flex justify-content-center">
+      <img style="text-align:center" src="https://rxjs.dev/assets/images/guide/marble-diagram-anatomy.svg">
+    </div>
+    `,
+  },
+];

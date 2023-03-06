@@ -4,6 +4,7 @@ import { ROUTES } from '../../models/menu.model';
 import { BasicDefinitionsComponent } from './basic-definitions.component';
 import {
   BASIC_INTRODUCTION_SECTION,
+  MARBLE_DIAGRAM_SECTION,
   OBSERVABLE_SECTION,
   OBSERVER_SECTION,
   OPERATORS_SECTION,
@@ -29,6 +30,11 @@ const routes: Routes = [
     path: ROUTES.OPERATORS,
     component: BasicDefinitionsComponent,
     data: { selectedData: OPERATORS_SECTION },
+  },
+  {
+    path: ROUTES.MARBLE_DIAGRAM,
+    component: BasicDefinitionsComponent,
+    data: { selectedData: MARBLE_DIAGRAM_SECTION },
   },
 ];
 
