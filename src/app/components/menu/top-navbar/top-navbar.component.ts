@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { werfenLogo } from '../../../models/menu.model';
 
 @Component({
@@ -7,5 +7,11 @@ import { werfenLogo } from '../../../models/menu.model';
   styleUrls: ['./top-navbar.component.scss'],
 })
 export class TopNavbarComponent {
+  @Output() public navbarOpen = new EventEmitter<boolean>();
+
   public werfenLogo = werfenLogo;
+
+  public doToggleButton(): void {
+    this.navbarOpen.emit(true);
+  }
 }

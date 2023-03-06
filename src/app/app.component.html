@@ -1,5 +1,5 @@
 <header>
-  <app-top-navbar></app-top-navbar>
+  <app-top-navbar (navbarOpen)="toggleNavbar()"></app-top-navbar>
 </header>
 <main>
   <div class="container-fluid">
@@ -7,6 +7,7 @@
       <nav
         id="sidebarMenu"
         class="col-md-4 col-lg-2 d-md-block bg-light sidebar collapse"
+        [ngClass]="{ 'show': navbarOpen }"
       >
         <app-side-navbar (selectedTitle)="setTitle($event)"></app-side-navbar>
       </nav>

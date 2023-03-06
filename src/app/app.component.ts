@@ -7,11 +7,17 @@ import { Link } from './models/menu.model';
 })
 export class AppComponent {
   public selectedItem = 'Select a subject to start!';
+  public navbarOpen = false;
 
   constructor(private readonly router: Router) {}
 
   public setTitle({ title, url }: Link): void {
     this.selectedItem = title;
+    this.toggleNavbar();
     this.router.navigate([`/${url}`]);
+  }
+
+  public toggleNavbar(): void {
+    this.navbarOpen = !this.navbarOpen;
   }
 }

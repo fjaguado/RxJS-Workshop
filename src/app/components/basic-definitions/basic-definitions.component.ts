@@ -5,6 +5,11 @@ import { SECTION } from '../../models/data.model';
 @Component({
   selector: 'app-basic-definitions',
   templateUrl: 'basic-definitions.component.html',
+  styles: [
+    `body {
+    text-align: justify;
+  }`,
+  ],
 })
 export class BasicDefinitionsComponent implements OnInit {
   public selectedData: SECTION[];
