@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { SECTION } from '../../models/data.model';
+import { Component, Input } from '@angular/core';
+import { SECTION } from '../../../models/data.model';
 
 @Component({
   selector: 'app-info-section',
