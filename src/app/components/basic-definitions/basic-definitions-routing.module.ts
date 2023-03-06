@@ -8,6 +8,7 @@ import {
   OBSERVABLE_SECTION,
   OBSERVER_SECTION,
   OPERATORS_SECTION,
+  SUBSCRIPTION_SECTION,
 } from './basic-definitions.data';
 
 const routes: Routes = [
@@ -35,6 +36,11 @@ const routes: Routes = [
     path: ROUTES.MARBLE_DIAGRAM,
     component: BasicDefinitionsComponent,
     data: { selectedData: MARBLE_DIAGRAM_SECTION },
+  },
+  {
+    path: ROUTES.SUBSCRIPTION,
+    component: BasicDefinitionsComponent,
+    data: { selectedData: SUBSCRIPTION_SECTION },
   },
 ];
 

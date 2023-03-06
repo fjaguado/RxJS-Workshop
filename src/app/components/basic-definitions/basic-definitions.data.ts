@@ -284,9 +284,45 @@ export const MARBLE_DIAGRAM_SECTION: SECTION[] = [
     <p>
       In a marble diagram, <b>time flows to the right</b>, and the diagram describes how values ("marbles") are emitted on the Observable execution.
     </p>
-    <div class="d-flex justify-content-center">
-      <img style="text-align:center" src="https://rxjs.dev/assets/images/guide/marble-diagram-anatomy.svg">
+    <div class="text-center">
+        <img src="https://rxjs.dev/assets/images/guide/marble-diagram-anatomy.svg">
     </div>
+    `,
+  },
+];
+
+export const SUBSCRIPTION_SECTION: SECTION[] = [
+  {
+    title: '',
+    body: `
+    <p>
+     A Subscription is an object that represents the execution of an Observable.
+    </p>
+    <p>
+      A Subscription has one important method called <b>unsubscribe()</b> that takes no argument and just disposes the resource (data) held by the subscription. 
+    </p>
+    <code>
+    <pre>
+    const subscription = observable.subscribe(x => console.log(x));
+    subscription.unsubscribe();
+    </pre>
+    </code>
+    <p>
+      Subscriptions can also be put together, so that a call to an unsubscribe() of one Subscription may unsubscribe multiple Subscriptions. You can do this by <b>adding</b> one subscription into another:
+    </p>
+    <code>
+    <pre>
+    const sub1 = observable1.subscribe(x => console.log('first'));
+    const sub2 = observable2.subscribe(x => console.log('second'));
+     
+    sub1.add(sub2);
+    
+    sub1.unsubscribe();
+    </pre>
+    </code>
+    <p>
+      Subscriptions also have a <b>remove(otherSubscription)</b> method in order to undo the addition of a child Subscription.
+    </p>
     `,
   },
 ];
