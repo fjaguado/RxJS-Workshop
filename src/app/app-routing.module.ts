@@ -11,6 +11,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: ROUTES.SUBJECTS,
+    loadChildren: () =>
+      import('./components/subjects/subjects.module').then(
+        (m) => m.SubjectsModule
+      ),
+  },
+  {
     path: '**',
     redirectTo: '',
   },
