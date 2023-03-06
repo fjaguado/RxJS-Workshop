@@ -4,7 +4,7 @@ import { ROUTES } from './models/menu.model';
 
 const routes: Routes = [
   {
-    path: ROUTES.BASIC_DEFINITIONS,
+    path: '',
     loadChildren: () =>
       import('./components/basic-definitions/basic-definitions.module').then(
         (m) => m.BasicDefinitionsModule

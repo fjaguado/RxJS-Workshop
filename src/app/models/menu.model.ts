@@ -7,7 +7,12 @@ export interface Link {
 }
 
 export enum ROUTES {
-  BASIC_DEFINITIONS = 'basic-definitions',
+  INTRODUCTION = 'introduction',
+  OBSERVABLE = 'observable',
+  OBSERVER = 'observer',
+  OPERATORS = 'operators',
+  SUBSCRIPTION = 'subscription',
+  MARBLE_DIAGRAM = 'marble-diagram',
   SUBJECTS = 'subjects',
   OF_FROM_FROMEVENT = 'of-from-fromevent',
   COMBINE_LATEST = 'combine-latest',

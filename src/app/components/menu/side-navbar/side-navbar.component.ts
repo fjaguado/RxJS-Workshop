@@ -12,9 +12,41 @@ export class SideNavbarComponent {
   public links: Link[] = [
     {
       title: 'Basic definitions',
-      url: ROUTES.BASIC_DEFINITIONS,
-      isSelectable: true,
+      url: 'collapseChild-basic-definitions',
+      isSelectable: false,
       isParent: true,
+      childLinks: [
+        {
+          title: 'Introduction',
+          url: ROUTES.INTRODUCTION,
+          isSelectable: true
+        },
+        {
+          title: 'Observable',
+          url: ROUTES.OBSERVABLE,
+          isSelectable: true
+        },
+        {
+          title: 'Observer',
+          url: ROUTES.OBSERVER,
+          isSelectable: true
+        },
+        {
+          title: 'Operators',
+          url: ROUTES.OPERATORS,
+          isSelectable: true
+        },
+        {
+          title: 'Subscription',
+          url: ROUTES.SUBSCRIPTION,
+          isSelectable: true
+        },
+        {
+          title: 'Marble diagram',
+          url: ROUTES.MARBLE_DIAGRAM,
+          isSelectable: true
+        },
+      ]
     },
     {
       title: 'Subjects',
