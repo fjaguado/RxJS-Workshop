@@ -4,7 +4,7 @@ import { SECTION } from '../../../models/data.model';
 
 @Component({
   selector: 'app-subject',
-  templateUrl: './subject.component.html',
+  templateUrl: 'subject.component.html',
 })
 export class SubjectComponent implements OnInit {
   public selectedData: SECTION[];
