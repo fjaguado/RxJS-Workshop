@@ -1,33 +1,28 @@
-<nav
-  id="sidebarMenu"
-  class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
->
-  <div class="position-sticky pt-3 sidebar-sticky">
-    <ul class="nav flex-column">
-      <li class="nav-item" *ngFor="let link of links">
-        <a
-          class="nav-link active parent-link"
-          aria-current="page"
-          [attr.data-bs-target]="getDropdownTarget(link)"
-          data-bs-toggle="collapse"
-          (click)="doSelectTitle(link)"
-        >
-          <span data-feather="home" class="align-text-bottom"></span>
-          {{ link.title }}
-        </a>
-        <div class="collapse" [id]="link.url" style="margin-left: 15px">
-          <div *ngFor="let childLink of link.childLinks">
-            <a
-              class="nav-link child-link"
-              aria-current="page"
-              (click)="doSelectTitle(childLink)"
-            >
-              <span data-feather="home" class="align-text-bottom"></span>
-              {{ childLink.title }}
-            </a>
-          </div>
+<div class="position-sticky pt-3 sidebar-sticky">
+  <ul class="nav flex-column">
+    <li class="nav-item" *ngFor="let link of links">
+      <a
+        class="nav-link active parent-link"
+        aria-current="page"
+        [attr.data-bs-target]="getDropdownTarget(link)"
+        data-bs-toggle="collapse"
+        (click)="doSelectTitle(link)"
+      >
+        <span data-feather="home" class="align-text-bottom"></span>
+        {{ link.title }}
+      </a>
+      <div class="collapse" [id]="link.url" style="margin-left: 15px">
+        <div *ngFor="let childLink of link.childLinks">
+          <a
+            class="nav-link child-link"
+            aria-current="page"
+            (click)="doSelectTitle(childLink)"
+          >
+            <span data-feather="home" class="align-text-bottom"></span>
+            {{ childLink.title }}
+          </a>
         </div>
-      </li>
-    </ul>
-  </div>
-</nav>
+      </div>
+    </li>
+  </ul>
+</div>
