@@ -19,40 +19,62 @@ export class SideNavbarComponent {
         {
           title: 'Introduction',
           url: ROUTES.INTRODUCTION,
-          isSelectable: true
+          isSelectable: true,
         },
         {
           title: 'Observable',
           url: ROUTES.OBSERVABLE,
-          isSelectable: true
+          isSelectable: true,
         },
         {
           title: 'Observer',
           url: ROUTES.OBSERVER,
-          isSelectable: true
+          isSelectable: true,
         },
         {
           title: 'Operators',
           url: ROUTES.OPERATORS,
-          isSelectable: true
+          isSelectable: true,
         },
         {
           title: 'Marble diagram',
           url: ROUTES.MARBLE_DIAGRAM,
-          isSelectable: true
+          isSelectable: true,
         },
         {
           title: 'Subscription',
           url: ROUTES.SUBSCRIPTION,
-          isSelectable: true
+          isSelectable: true,
         },
-      ]
+      ],
     },
     {
       title: 'Subjects',
-      url: ROUTES.SUBJECTS,
-      isSelectable: true,
+      url: 'collapseChild-subjects',
+      isSelectable: false,
       isParent: true,
+      childLinks: [
+        {
+          title: 'Subject',
+          url: ROUTES.SUBJECT,
+          isSelectable: true,
+        },
+        {
+          title: 'BehaviorSubject',
+          url: ROUTES.BEHAVIOR_SUBJECT,
+          isSelectable: true,
+        },
+        {
+          title: 'ReplaySubject',
+          url: ROUTES.REPLAY_SUBJECT,
+          isSelectable: true,
+        },
+        {
+          title: 'AsyncSubject',
+          url: ROUTES.ASYNC_SUBJECT,
+          isSelectable: true,
+        },
+      ],
     },
     {
       title: 'Creation operators',
