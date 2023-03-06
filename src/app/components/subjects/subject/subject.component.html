@@ -1,0 +1,63 @@
+<div class="d-flex row">
+  <app-info-section [selectedData]="SUBJECT_SECTION[0]"></app-info-section>
+  <div>
+    <h4>Example:</h4>
+    <div class="pt-3 d-flex column gap-5">
+      <div class="input-group mb-3 align-items-center">
+        <form>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Send a value!"
+            [(ngModel])="subjectValue"
+          />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="doSendValue()"
+          >
+            Next
+          </button>
+        </form>
+      </div>
+      <div class="d-flex row">
+        <div class="form-text">Subject 1</div>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            disabled
+            value="Received value: 10"
+          />
+        </div>
+        <div class="form-text">Subject 2</div>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            disabled
+            value="Received value: 10"
+          />
+        </div>
+        <div class="form-text">Subject 3</div>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            disabled
+            value="Received value: 10"
+          />
+        </div>
+        <div class="form-text">Subject 4</div>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            disabled
+            value="Received value: 10"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

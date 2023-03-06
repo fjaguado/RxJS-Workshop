@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { SECTION } from '../../../models/data.model';
+import { Component } from '@angular/core';
+import { Subject } from 'rxjs';
+import { SUBJECT_SECTION } from '../subjects.data';
 
 @Component({
   selector: 'app-subject',
   templateUrl: 'subject.component.html',
 })
-export class SubjectComponent implements OnInit {
-  public selectedData: SECTION[];
+export class SubjectComponent {
+  public SUBJECT_SECTION = SUBJECT_SECTION;
 
-  constructor(private readonly route: ActivatedRoute) {}
+  public subject = new Subject<string>();
+  public subjectValue = '';
 
-  public ngOnInit(): void {
-    this.route.data.subscribe(
-      (data) => (this.selectedData = data.selectedData)
-    );
+  constructor() {}
+
+  public doSendValue(): void {
+    this.subject.next(this.subjectValue);
   }
 }

@@ -6,5 +6,5 @@ import { SECTION } from '../../../models/data.model';
   templateUrl: './info-section.component.html',
 })
 export class InfoSectionComponent {
-  @Input() public selectedData: SECTION[];
+  @Input() public selectedData: SECTION;
 }

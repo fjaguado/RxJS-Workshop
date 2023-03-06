@@ -1,6 +1,4 @@
-<section>
-  <article *ngFor="let data of selectedData" class="pb-3">
-    <h3>{{ data.title }}</h3>
-    <P [innerHTML]="data.body"></P>
-  </article>
-</section>
+<article class="pb-3">
+  <h3>{{ selectedData.title }}</h3>
+  <P [innerHTML]="selectedData.body"></P>
+</article>

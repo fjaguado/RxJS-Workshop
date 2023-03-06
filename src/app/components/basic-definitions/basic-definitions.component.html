@@ -1,1 +1,3 @@
-<app-info-section [selectedData]="selectedData"></app-info-section>
+<div *ngFor="let data of selectedData">
+  <app-info-section [selectedData]="data"></app-info-section>
+</div>
