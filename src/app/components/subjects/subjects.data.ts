@@ -34,7 +34,20 @@ export const SUBJECT_SECTION: SECTION[] = [
         <code>
         <pre>
         const subject = new Subject();
-        subject.subscribe(...);
+        subject.subscribe(x => console.log(x));
+        </pre>
+        </code>
+        <p>
+          You could use a function inside this method or an Observer.
+        </p>
+        <code>
+        <pre>
+        const subject = new Subject();        
+        subject.subscribe({ 
+          next: (x) => console.log(x),
+          error: (x) => console.log(x),
+          complete: (x) => console.log(x)
+        });
         </pre>
         </code>
       </li>
@@ -51,6 +64,41 @@ export const SUBJECT_SECTION: SECTION[] = [
       </li>
     </ul>
     </p>
+    `,
+  },
+  {
+    title: '',
+    body: `
+    <div class="d-flex justify-content-center">
+      <video id="player" playsinline controls>
+        <source src="https://images.indepth.dev/references/rxjs/subjects/subject.mp4" type="video/mp4" />
+      </video>
+    </div>
+    `
+  },
+  {
+    title: 'Observer privacy',
+    body: `
+      <p>
+        To prevent outside code from <u>calling next on a subject</u>, the method <b>asObservable()</b> exists. For example, we can create a method that returns the observable of the subject, so everyone that subscribes to it are able to listen to it:
+      </p>
+      <code>
+      <pre>
+      private listen(): Observable<<span>any</span>> {
+        const subject = new Subject();
+        return subject.asObservable();
+      }
+      </pre>
+      </code>
+      <p>
+        In the code snippet above only the code inside the listen function can call .next method. If outside code calls the method, the error Property next does not exist on type Observable‹unknown› is thrown:
+      </p>
+      <code>
+      <pre>
+      const subject = listen();
+      subject.next('d'); // produces the error
+      </pre>
+      </code>
     `,
   },
 ];

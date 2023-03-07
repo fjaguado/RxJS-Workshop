@@ -1,14 +1,46 @@
 <div class="d-flex row">
   <app-info-section [selectedData]="SUBJECT_SECTION[0]"></app-info-section>
-  <div>
+  <div class="pb-4">
     <h4>Example:</h4>
+    <p>
+      When we declare a new Subject and we try to send a new value (in this
+      case, sending a new value with the left input), the Subject will not emit
+      any value. This is because, by default, <b>Subjects are lazy</b> and that
+      means that they need someone to be subscribed and listen to what they are
+      emitting.
+    </p>
+    <p>
+      In this case, when we try to send a new value with the left input, nothing
+      is going to happen because we're not subscribed to the Subject. Once we
+      hit the <b>Open subscriptions</b> button, we're going to be able to listen
+      to what the Subject is emitting.
+    </p>
+    <p>
+      By default,
+      <b
+        >Subjects don't have an initial value and don't return the current value
+      </b>
+      in the moment that we're subscribing to it, they are going to receive only
+      values sent by the <b>next()</b> method <u>while they're subscribed</u>.
+    </p>
+    <p>
+      This is why if we sent a value while we're not subscribed and later we
+      subscribe, we're not going to receive anything until we open the
+      subscription and send a new value.
+    </p>
+    <div class="alert alert-danger" *ngIf="subject.closed">
+      Subject closed! You're not able to subscribe again and you'll not receive
+      any more values!
+    </div>
     <div class="pt-3 d-flex column gap-5">
-      <div class="input-group mb-3 align-items-center">
-        <form>
+      <div class="d-flex row align-content-center">
+        <div class="form-text">Subject Observer</div>
+        <div class="input-group align-items-center">
           <input
             type="text"
             class="form-control"
             placeholder="Send a value!"
+            name="subjectValue"
             [(ngModel)]="subjectValue"
           />
           <button
@@ -18,46 +50,78 @@
           >
             Next
           </button>
-        </form>
+        </div>
       </div>
-      <div class="d-flex row">
-        <div class="form-text">Subject 1</div>
+      <div class="d-flex row gap-1">
+        <div class="form-text">Subject 1 (Observable / Listener)</div>
         <div class="input-group mb-3">
           <input
             type="text"
             class="form-control"
             disabled
-            value="Received value: 10"
+            [value]="receivedValue1"
           />
         </div>
-        <div class="form-text">Subject 2</div>
+        <div class="form-text">Subject 2 (Observable / Listener)</div>
         <div class="input-group mb-3">
           <input
             type="text"
             class="form-control"
             disabled
-            value="Received value: 10"
+            [value]="receivedValue2"
           />
         </div>
-        <div class="form-text">Subject 3</div>
+        <div class="form-text">Subject 3 (Observable / Listener)</div>
         <div class="input-group mb-3">
           <input
             type="text"
             class="form-control"
             disabled
-            value="Received value: 10"
-          />
-        </div>
-        <div class="form-text">Subject 4</div>
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            disabled
-            value="Received value: 10"
+            [value]="receivedValue3"
           />
         </div>
       </div>
     </div>
+    <div class="d-flex justify-content-center py-4 gap-3">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="openSubscriptions()"
+      >
+        Open subscriptions
+      </button>
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="closeSubscriptions()"
+      >
+        Close subscriptions
+      </button>
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="closeSubject()"
+      >
+        Close Subject
+      </button>
+    </div>
+    <p>
+      Furthermore, in this example we've subscribed three times (in different
+      instances) to the same subject and we have a Close Subscriptions button
+      that is going to automatically unsubscribe these three subscriptions. If
+      it's needed, in other scenarios we'll be able to unsubscribe individually
+      from each subscription.
+    </p>
+    <p>
+      Last but not least, if we <u>unsubscribe from the Subject</u>, we're not
+      going to be able to receive any new value sent by the Subject's next()
+      method and
+      <b
+        >we're not going to be able to resubscribe to this Subject because we've
+        already unsubscribed from it</b
+      >.
+    </p>
   </div>
+  <app-info-section [selectedData]="SUBJECT_SECTION[1]"></app-info-section>
+  <app-info-section [selectedData]="SUBJECT_SECTION[2]"></app-info-section>
 </div>
