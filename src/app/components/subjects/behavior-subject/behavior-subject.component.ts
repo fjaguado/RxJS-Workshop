@@ -14,8 +14,6 @@ import { BEHAVIOR_SUBJECT_SECTION } from '../subjects.data';
   ],
 })
 export class BehaviorSubjectComponent {
-  @ViewChild('liveToast') public liveToast;
-
   public BEHAVIOR_SUBJECT_SECTION = BEHAVIOR_SUBJECT_SECTION;
 
   public showBehaviorSubjectValue = false;
