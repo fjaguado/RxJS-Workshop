@@ -1,3 +1,136 @@
-<p>
-behavior-subject works!
-</p>
+<div class="d-flex row">
+  <app-info-section
+    [selectedData]="BEHAVIOR_SUBJECT_SECTION[0]"
+  ></app-info-section>
+  <app-info-section
+    [selectedData]="BEHAVIOR_SUBJECT_SECTION[1]"
+  ></app-info-section>
+  <div class="pb-4">
+    <h4>Example:</h4>
+    <p>Following the Subject's example, in this case:</p>
+    <ul>
+      <li>
+        <p>
+          If we click on the <b>Storaged value</b>, a Toast will be displayed
+          showing the last emitted value (or the last storaged value) from this
+          BehaviorSubject.
+        </p>
+      </li>
+      <li>
+        <p>
+          If we initially click on the <b>Open Subscriptions</b> button, every
+          Subject input will be filled with the last BehaviorSubject's emitted
+          value.
+        </p>
+      </li>
+      <li>
+        <p>
+          If we haven't subscribed yet to the BehaviorSubject and we sent a new
+          value with the <b>BehaviorSubject's next() method</b>, that value will
+          not be emitted, but it will be storaged in the BehaviorSubject's
+          <b>value</b> property. Later, when we subscribe to it, it will emit
+          the last storaged value.
+        </p>
+      </li>
+    </ul>
+    <div class="alert alert-success" *ngIf="showBehaviorSubjectValue">
+      Storaged value: {{ getStoragedValue() }}
+    </div>
+    <div class="alert alert-danger" *ngIf="behaviorSubject.closed">
+      BehaviorSubject closed! You'll not be able to subscribe it again and you'll not be able to accesss to its value because it's closed!
+    </div>
+    <div class="pt-3 d-flex column gap-5">
+      <div class="d-flex row align-content-center">
+        <div class="form-text">BehaviorSubject Observer</div>
+        <div class="input-group align-items-center">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Send a value!"
+            name="subjectValue"
+            [(ngModel)]="subjectValue"
+          />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="doSendValue()"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+      <div class="d-flex row gap-1">
+        <div class="form-text">BehaviorSubject 1 (Observable / Listener)</div>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            disabled
+            [value]="receivedValue1"
+          />
+        </div>
+        <div class="form-text">BehaviorSubject 2 (Observable / Listener)</div>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            disabled
+            [value]="receivedValue2"
+          />
+        </div>
+        <div class="form-text">BehaviorSubject 3 (Observable / Listener)</div>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            disabled
+            [value]="receivedValue3"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center py-4 gap-3">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="showStoragedValue()"
+      >
+        Storaged value
+      </button>
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="openSubscriptions()"
+      >
+        Open subscriptions
+      </button>
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="closeSubscriptions()"
+      >
+        Close subscriptions
+      </button>
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="closeSubject()"
+      >
+        Close BehaviorSubject
+      </button>
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="restartSubject()"
+      >
+        Restart BehaviorSubject
+      </button>
+    </div>
+  </div>
+  <app-info-section
+    [selectedData]="BEHAVIOR_SUBJECT_SECTION[2]"
+  ></app-info-section>
+  <app-info-section
+    [selectedData]="BEHAVIOR_SUBJECT_SECTION[3]"
+  ></app-info-section>
+</div>

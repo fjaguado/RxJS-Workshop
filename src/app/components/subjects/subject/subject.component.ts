@@ -5,6 +5,13 @@ import { SUBJECT_SECTION } from '../subjects.data';
 @Component({
   selector: 'app-subject',
   templateUrl: 'subject.component.html',
+  styles: [
+    `
+    p {
+      text-align: justify;
+    }
+  `,
+  ],
 })
 export class SubjectComponent {
   public SUBJECT_SECTION = SUBJECT_SECTION;
@@ -71,11 +78,23 @@ export class SubjectComponent {
     return this.subject.asObservable();
   }
 
+  public restartSubject(): void {
+    this.subject = new Subject<string>();
+    this.restartObservableValues();
+  }
+
   private isSubjectClosed(): boolean {
     if (this.subject.closed) {
       console.log('Subject closed!!');
       return true;
     }
     return false;
+  }
+
+  private restartObservableValues(): void {
+    this.receivedValue1 = '';
+    this.receivedValue2 = '';
+    this.receivedValue3 = '';
+    this.subjectValue = '';
   }
 }
