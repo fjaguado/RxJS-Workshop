@@ -1,0 +1,16 @@
+.bd-example {
+  @media (min-width: 768px) {
+    --bd-example-padding: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: 1px;
+    border-top-left-radius: var(--bs-border-radius);
+    border-top-right-radius: var(--bs-border-radius);
+  }
+  --bd-example-padding: 1rem;
+  position: relative;
+  padding: var(--bd-example-padding);
+  margin: 0 -1.5rem;
+  border: solid var(--bs-border-color);
+  border-width: 1px 0;
+}

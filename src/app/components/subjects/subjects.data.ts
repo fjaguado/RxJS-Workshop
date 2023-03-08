@@ -137,8 +137,8 @@ export const SUBJECT_SECTION: SECTION[] = [
       subscribe, we're not going to receive anything until we open the
       subscription and send a new value.
     </p>
-    `
-  }
+    `,
+  },
 ];
 
 export const BEHAVIOR_SUBJECT_SECTION: SECTION[] = [
@@ -305,8 +305,8 @@ export const BEHAVIOR_SUBJECT_SECTION: SECTION[] = [
         </p>
       </li>
     </ul>
-    `
-  }
+    `,
+  },
 ];
 
 export const REPLAY_SUBJECT_SECTION: SECTION[] = [
@@ -463,6 +463,6 @@ export const REPLAY_SUBJECT_SECTION: SECTION[] = [
         </p>
       </li>
     </ul>
-    `
-  }
+    `,
+  },
 ];
