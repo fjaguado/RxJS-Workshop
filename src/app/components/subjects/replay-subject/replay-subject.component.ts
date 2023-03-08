@@ -106,13 +106,17 @@ export class ReplaySubjectComponent {
 
   public restartSubject(): void {
     this.replaySubject = new ReplaySubject();
+
     this.subjectValue = '';
     this.amountOfRecords = '';
     this.windowTime = '';
+
     this.subjectExecuted = false;
-    this.closeSubscription('obs1');
-    this.closeSubscription('obs2');
-    this.closeSubscription('obs3');
+
+    this.subscription1 = undefined;
+    this.subscription2 = undefined;
+    this.subscription3 = undefined;
+
     this.receivedValue1 = [];
     this.receivedValue2 = [];
     this.receivedValue3 = [];
@@ -264,7 +268,7 @@ function getReplaySubjectTSCode(): string {
       this.subjectExecuted = true;
     }
   }
-  `
+  `;
 }
 
 function getReplaySubjectHTMLCode(): string {
@@ -445,5 +449,5 @@ function getReplaySubjectHTMLCode(): string {
       Restart ReplaySubject
     </button>
   </div>
-  `
+  `;
 }

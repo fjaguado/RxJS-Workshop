@@ -477,8 +477,15 @@ export const ASYNC_SUBJECT_SECTION: SECTION[] = [
     title: '',
     body: `
     <p>
-     AsyncSubject is a variant of a Subject which <b>keeps the last value emitted</b> by a source observable before completion and sends it to all new subscriptions. AsyncSubject <u>needs to wait until the source observable completes</u> before identifying the current value as the latest and only then emit it to existing or future subscribers.
+     AsyncSubject is a variant of a Subject which <b>keeps the last value emitted</b> by a source observable before completion and sends it to all new subscriptions. <b>AsyncSubject needs to wait until the source observable completes</b> before identifying the current value as the latest and only then emit it to existing or future subscribers.
     </p>
+    <code>
+    <pre class="mt-4">
+    import { AsyncSubject } from 'rxjs';
+
+    const subject = new AsyncSubject();
+    </pre>
+    </code>
     <p>
       This behavior means that you can always directly get the last emitted value from the AsyncSubject even if the subscriber subscribes much later than the value was stored.
     </p>
@@ -491,7 +498,7 @@ export const ASYNC_SUBJECT_SECTION: SECTION[] = [
     title: 'Similarity and differences with Promises',
     body: `
     <p>
-      In a way, this AsyncSubject is similar to how Promise works. The biggest difference between the two is: 
+      In a way, AsyncSubject is similar to how Promise works. The biggest difference between the two is: 
       <ul>
         <li>
           Promises are always eager, meaning it will <b>execute the function you pass to it immediately</b>.
@@ -500,6 +507,54 @@ export const ASYNC_SUBJECT_SECTION: SECTION[] = [
           However, with AsyncSubject you can <b>control when you want to subscribe to a source observable</b>. And because all observables are lazy, only when you subscribe the producer function in the source observable will be executed.
         </li>
       </ul>
+    </p>
+    `,
+  },
+  {
+    title: 'Example',
+    body: `
+    <p>
+      In this case the AsyncSubject will store the last emitted value and will only emit <b>when the stream completes</b>. For example:
+    </p>
+    <ul>
+      <li>
+        <p>
+          If we emit new values with the <b>Next</b> button, AsyncSubject will store the last emitted value.
+        </p>
+      </li>
+      <li>
+        <p>
+          If we subscribe to this subject, nothing will happen because AsyncSubject will only emit when it completes.
+        </p>
+      </li>
+      <li>
+        <p>
+          If we complete the stream, any open subscription will receive the last stored value.
+        </p>
+      </li>
+      <li>
+        <p>
+          If the stream completes and later a subscription opens, it will also receive the last emitted value.
+        </p>
+      </li>
+    </ul>
+    `,
+  },
+  {
+    title: '',
+    body: `
+    <div class="d-flex justify-content-center">
+      <video id="player" playsinline controls>
+        <source src="https://images.indepth.dev/references/rxjs/subjects/async-subject.mp4" type="video/mp4" />
+      </video>
+    </div>
+    `,
+  },
+  {
+    title: 'Usage',
+    body: `
+    <p>
+      AsyncSubject is a great choice if you need to fetch and cache (one-shot) resources. When making a network request we’re generally interested in the final output, which is a response. And to get it we need to wait until the request is fully loaded at which point an observable stream completes.
     </p>
     `,
   },

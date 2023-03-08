@@ -2,36 +2,26 @@
   <app-info-section
     [selectedData]="ASYNC_SUBJECT_SECTION[0]"
   ></app-info-section>
+  <app-info-section
+    [selectedData]="ASYNC_SUBJECT_SECTION[1]"
+  ></app-info-section>
+  <app-info-section
+    [selectedData]="ASYNC_SUBJECT_SECTION[4]"
+  ></app-info-section>
   <div class="pb-4">
     <app-info-section
-      [selectedData]="ASYNC_SUBJECT_SECTION[0]"
+      [selectedData]="ASYNC_SUBJECT_SECTION[2]"
     ></app-info-section>
-    <div class="alert alert-danger" *ngIf="asyncSubject.closed">
-      BehaviorSubject closed! You'll not be able to subscribe it again and
-      you'll not be able to accesss to its value because it's closed!
+    <app-info-section
+      [selectedData]="ASYNC_SUBJECT_SECTION[3]"
+    ></app-info-section>
+    <div class="alert alert-danger" *ngIf="subjectCompleted">
+      AsyncSubject completed! This Subject won't be able to emit data until you
+      restart it.
     </div>
     <div class="pt-3 d-flex column gap-5">
-      <div class="d-flex row align-content-center">
-        <div class="form-text">BehaviorSubject Observer</div>
-        <div class="input-group align-items-center">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Send a value!"
-            name="subjectValue"
-            [(ngModel)]="subjectValue"
-          />
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            (click)="doSendValue()"
-          >
-            Next
-          </button>
-        </div>
-      </div>
       <div class="row gap-1">
-        <div class="form-text">ReplaySubject Observer</div>
+        <div class="form-text">AsyncSubject Observer</div>
         <div class="input-group align-items-center">
           <input
             type="text"
@@ -39,22 +29,25 @@
             placeholder="Send a value!"
             name="subjectValue"
             [(ngModel)]="subjectValue"
+            [disabled]="subjectCompleted"
           />
           <button
             class="btn btn-outline-secondary"
             type="button"
             (click)="doSendValue()"
+            [disabled]="subjectCompleted"
           >
             Next
           </button>
         </div>
-        <div class="form-text">ReplaySubject 1 (Observable / Listener)</div>
+        <div class="form-text mt-3">AsyncSubject 1 (Observable / Listener)</div>
         <div class="input-group mb-3">
           <input
             type="text"
             class="form-control"
             disabled
             value="[{{ receivedValue1.toString() }}]"
+            [disabled]="subjectCompleted"
           />
           <button
             class="btn btn-outline-secondary"
@@ -67,6 +60,7 @@
             class="btn btn-outline-secondary"
             type="button"
             (click)="closeSubscription('obs1')"
+            [disabled]="subjectCompleted"
           >
             Close
           </button>
@@ -74,17 +68,19 @@
             class="btn btn-outline-secondary"
             type="button"
             (click)="restartSubscription('obs1')"
+            [disabled]="subjectCompleted"
           >
             Restart
           </button>
         </div>
-        <div class="form-text">ReplaySubject 2 (Observable / Listener)</div>
+        <div class="form-text">AsyncSubject 2 (Observable / Listener)</div>
         <div class="input-group mb-3">
           <input
             type="text"
             class="form-control"
             disabled
             value="[{{ receivedValue2.toString() }}]"
+            [disabled]="subjectCompleted"
           />
           <button
             class="btn btn-outline-secondary"
@@ -97,6 +93,7 @@
             class="btn btn-outline-secondary"
             type="button"
             (click)="closeSubscription('obs2')"
+            [disabled]="subjectCompleted"
           >
             Close
           </button>
@@ -104,17 +101,19 @@
             class="btn btn-outline-secondary"
             type="button"
             (click)="restartSubscription('obs2')"
+            [disabled]="subjectCompleted"
           >
             Restart
           </button>
         </div>
-        <div class="form-text">ReplaySubject 3 (Observable / Listener)</div>
+        <div class="form-text">AsyncSubject 3 (Observable / Listener)</div>
         <div class="input-group mb-3">
           <input
             type="text"
             class="form-control"
             disabled
             value="[{{ receivedValue3.toString() }}]"
+            [disabled]="subjectCompleted"
           />
           <button
             class="btn btn-outline-secondary"
@@ -127,6 +126,7 @@
             class="btn btn-outline-secondary"
             type="button"
             (click)="closeSubscription('obs3')"
+            [disabled]="subjectCompleted"
           >
             Close
           </button>
@@ -134,6 +134,7 @@
             class="btn btn-outline-secondary"
             type="button"
             (click)="restartSubscription('obs3')"
+            [disabled]="subjectCompleted"
           >
             Restart
           </button>
@@ -144,11 +145,19 @@
       <button
         class="btn btn-outline-secondary"
         type="button"
+        (click)="completeSubject()"
+        [disabled]="subjectCompleted"
+      >
+        Complete stream
+      </button>
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
         (click)="restartSubject()"
       >
-        Restart BehaviorSubject
+        Restart AsyncSubject
       </button>
     </div>
-    <!-- <app-code-tabs [tsCode]="tsCode" [htmlCode]="htmlCode"></app-code-tabs> -->
+    <app-code-tabs [tsCode]="tsCode" [htmlCode]="htmlCode"></app-code-tabs>
   </div>
 </div>
