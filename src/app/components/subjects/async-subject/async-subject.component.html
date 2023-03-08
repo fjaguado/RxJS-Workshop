@@ -1,0 +1,154 @@
+<div class="d-flex row">
+  <app-info-section
+    [selectedData]="ASYNC_SUBJECT_SECTION[0]"
+  ></app-info-section>
+  <div class="pb-4">
+    <app-info-section
+      [selectedData]="ASYNC_SUBJECT_SECTION[0]"
+    ></app-info-section>
+    <div class="alert alert-danger" *ngIf="asyncSubject.closed">
+      BehaviorSubject closed! You'll not be able to subscribe it again and
+      you'll not be able to accesss to its value because it's closed!
+    </div>
+    <div class="pt-3 d-flex column gap-5">
+      <div class="d-flex row align-content-center">
+        <div class="form-text">BehaviorSubject Observer</div>
+        <div class="input-group align-items-center">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Send a value!"
+            name="subjectValue"
+            [(ngModel)]="subjectValue"
+          />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="doSendValue()"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+      <div class="row gap-1">
+        <div class="form-text">ReplaySubject Observer</div>
+        <div class="input-group align-items-center">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Send a value!"
+            name="subjectValue"
+            [(ngModel)]="subjectValue"
+          />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="doSendValue()"
+          >
+            Next
+          </button>
+        </div>
+        <div class="form-text">ReplaySubject 1 (Observable / Listener)</div>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            disabled
+            value="[{{ receivedValue1.toString() }}]"
+          />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="openSubscription('obs1')"
+          >
+            Open
+          </button>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="closeSubscription('obs1')"
+          >
+            Close
+          </button>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="restartSubscription('obs1')"
+          >
+            Restart
+          </button>
+        </div>
+        <div class="form-text">ReplaySubject 2 (Observable / Listener)</div>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            disabled
+            value="[{{ receivedValue2.toString() }}]"
+          />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="openSubscription('obs2')"
+          >
+            Open
+          </button>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="closeSubscription('obs2')"
+          >
+            Close
+          </button>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="restartSubscription('obs2')"
+          >
+            Restart
+          </button>
+        </div>
+        <div class="form-text">ReplaySubject 3 (Observable / Listener)</div>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            disabled
+            value="[{{ receivedValue3.toString() }}]"
+          />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="openSubscription('obs3')"
+          >
+            Open
+          </button>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="closeSubscription('obs3')"
+          >
+            Close
+          </button>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="restartSubscription('obs3')"
+          >
+            Restart
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center py-4 gap-3">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="restartSubject()"
+      >
+        Restart BehaviorSubject
+      </button>
+    </div>
+    <!-- <app-code-tabs [tsCode]="tsCode" [htmlCode]="htmlCode"></app-code-tabs> -->
+  </div>
+</div>

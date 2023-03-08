@@ -429,6 +429,11 @@ export const REPLAY_SUBJECT_SECTION: SECTION[] = [
       </li>
       <li>
         <p>
+          If for example we set a <b>windowTime</b> value of 3000, the ReplaySubject will store the last stored value for only 3 seconds.
+        </p>
+      </li>
+      <li>
+        <p>
           While the subscription is still open, the subscription is going to
           continue receiving values sent by the ReplaySubject and will store it
           in a local variable.
@@ -463,6 +468,39 @@ export const REPLAY_SUBJECT_SECTION: SECTION[] = [
         </p>
       </li>
     </ul>
+    `,
+  },
+];
+
+export const ASYNC_SUBJECT_SECTION: SECTION[] = [
+  {
+    title: '',
+    body: `
+    <p>
+     AsyncSubject is a variant of a Subject which <b>keeps the last value emitted</b> by a source observable before completion and sends it to all new subscriptions. AsyncSubject <u>needs to wait until the source observable completes</u> before identifying the current value as the latest and only then emit it to existing or future subscribers.
+    </p>
+    <p>
+      This behavior means that you can always directly get the last emitted value from the AsyncSubject even if the subscriber subscribes much later than the value was stored.
+    </p>
+    <p>
+      In case of an error on the source observable, AsyncSubject will not emit the latest value to subscriptions. Instead, it will simply pass along the error notification from the source Observable to new subscriptions.
+    </p>
+    `,
+  },
+  {
+    title: 'Similarity and differences with Promises',
+    body: `
+    <p>
+      In a way, this AsyncSubject is similar to how Promise works. The biggest difference between the two is: 
+      <ul>
+        <li>
+          Promises are always eager, meaning it will <b>execute the function you pass to it immediately</b>.
+        </li>
+        <li>
+          However, with AsyncSubject you can <b>control when you want to subscribe to a source observable</b>. And because all observables are lazy, only when you subscribe the producer function in the source observable will be executed.
+        </li>
+      </ul>
+    </p>
     `,
   },
 ];

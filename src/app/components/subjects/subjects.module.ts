@@ -6,11 +6,13 @@ import { BehaviorSubjectComponent } from './behavior-subject/behavior-subject.co
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { ReplaySubjectComponent } from './replay-subject/replay-subject.component';
+import { AsyncSubjectComponent } from './async-subject/async-subject.component';
 
 const COMPONENTS = [
   SubjectComponent,
   BehaviorSubjectComponent,
   ReplaySubjectComponent,
+  AsyncSubjectComponent,
 ];
 const MODULES = [
   CommonModule,
