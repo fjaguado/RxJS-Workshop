@@ -4,33 +4,7 @@
   <app-info-section [selectedData]="SUBJECT_SECTION[2]"></app-info-section>
   <app-info-section [selectedData]="SUBJECT_SECTION[3]"></app-info-section>
   <div class="pb-4">
-    <h4>Example</h4>
-    <p>
-      When we define a new Subject and try to send a new value (in this
-      case, sending a new value with the Subject Observer input), the Subject will not emit
-      any value. This is because, by default, <b>Subjects are lazy</b> and that
-      means that they need someone to be subscribed and listen to what they are
-      emitting.
-    </p>
-    <p>
-      In this case, when we try to send a new value with the left input, nothing
-      is going to happen because we're not subscribed to the Subject. Once we
-      hit the <b>Open subscriptions</b> button, we're going to be able to listen
-      to what the Subject is emitting.
-    </p>
-    <p>
-      By default,
-      <b
-        >Subjects don't have an initial value and don't return the current value
-      </b>
-      in the moment that we're subscribing to it, they are going to receive only
-      values sent by the <b>next()</b> method <u>while they're subscribed</u>.
-    </p>
-    <p>
-      This is why if we sent a value while we're not subscribed and later we
-      subscribe, we're not going to receive anything until we open the
-      subscription and send a new value.
-    </p>
+    <app-info-section [selectedData]="SUBJECT_SECTION[4]"></app-info-section>
     <div class="alert alert-danger" *ngIf="subject.closed">
       Subject closed! You're not able to subscribe again and you'll not receive
       any more values!

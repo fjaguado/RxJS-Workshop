@@ -12,38 +12,15 @@
     [selectedData]="BEHAVIOR_SUBJECT_SECTION[2]"
   ></app-info-section>
   <div class="pb-4">
-    <h4>Example:</h4>
-    <p>Following the Subject's example, in this case:</p>
-    <ul>
-      <li>
-        <p>
-          If we click on the <b>Storaged value</b>, a Toast will be displayed
-          showing the last emitted value (or the last storaged value) from this
-          BehaviorSubject.
-        </p>
-      </li>
-      <li>
-        <p>
-          If we initially click on the <b>Open Subscriptions</b> button, every
-          Subject input will be filled with the last BehaviorSubject's emitted
-          value.
-        </p>
-      </li>
-      <li>
-        <p>
-          If we haven't subscribed yet to the BehaviorSubject and we sent a new
-          value with the <b>BehaviorSubject's next() method</b>, that value will
-          not be emitted, but it will be storaged in the BehaviorSubject's
-          <b>value</b> property. Later, when we subscribe to it, it will emit
-          the last storaged value.
-        </p>
-      </li>
-    </ul>
+    <app-info-section
+      [selectedData]="BEHAVIOR_SUBJECT_SECTION[5]"
+    ></app-info-section>
     <div class="alert alert-success" *ngIf="showBehaviorSubjectValue">
       Storaged value: {{ getStoragedValue() }}
     </div>
     <div class="alert alert-danger" *ngIf="behaviorSubject.closed">
-      BehaviorSubject closed! You'll not be able to subscribe it again and you'll not be able to accesss to its value because it's closed!
+      BehaviorSubject closed! You'll not be able to subscribe it again and
+      you'll not be able to accesss to its value because it's closed!
     </div>
     <div class="pt-3 d-flex column gap-5">
       <div class="d-flex row align-content-center">
@@ -133,4 +110,7 @@
       </button>
     </div>
   </div>
+  <app-info-section
+    [selectedData]="BEHAVIOR_SUBJECT_SECTION[4]"
+  ></app-info-section>
 </div>

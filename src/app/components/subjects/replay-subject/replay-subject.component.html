@@ -1,5 +1,5 @@
 <div class="d-flex row">
-  <!-- <app-info-section
+  <app-info-section
     [selectedData]="REPLAY_SUBJECT_SECTION[0]"
   ></app-info-section>
   <app-info-section
@@ -10,57 +10,11 @@
   ></app-info-section>
   <app-info-section
     [selectedData]="REPLAY_SUBJECT_SECTION[2]"
-  ></app-info-section> -->
+  ></app-info-section>
   <div class="pb-4">
-    <h4>Example</h4>
-    <p>
-      In this case the ReplaySubject will store the last X amount of records
-      setted in the <b>Amount</b> input. For example:
-    </p>
-    <ul>
-      <li>
-        <p>
-          If we set an amount of 3 records and store (with <b>Next</b>) 5
-          values, whenever any of the three subscriptions <b>Open</b>, they will
-          store the last 3 recorded values by the ReplaySubject.
-        </p>
-      </li>
-      <li>
-        <p>
-          While the subscription is still open, the subscription is going to
-          continue receiving values sent by the ReplaySubject and will store it
-          in a local variable.
-        </p>
-      </li>
-      <li>
-        <p>
-          If we don't want to keep receiving data, we can <b>Close</b> the
-          stream of data and any value sent by the ReplaySubject won't be
-          stored.
-        </p>
-      </li>
-      <li>
-        <p>
-          If the subscriptions is closed and later is opened again, the
-          ReplaySubject will emit the last X recorded values to the subscription
-          and the input will be loaded with the previous values and the new
-          ones.
-        </p>
-      </li>
-      <li>
-        <p>
-          Any of the subscriptions are able to be restarted with the
-          <b>Restart</b> button and able to start again and receive data again
-          after clicking on the <b>Open</b> button.
-        </p>
-      </li>
-      <li>
-        <p>
-          The whole process is able to be restarted with the
-          <b>Restart ReplaySubject</b> button.
-        </p>
-      </li>
-    </ul>
+    <app-info-section
+      [selectedData]="REPLAY_SUBJECT_SECTION[5]"
+    ></app-info-section>
     <div class="pt-3 d-flex column gap-3">
       <div class="row">
         <div class="row align-content-center">

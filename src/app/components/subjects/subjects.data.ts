@@ -108,6 +108,37 @@ export const SUBJECT_SECTION: SECTION[] = [
       </code>
     `,
   },
+  {
+    title: 'Example',
+    body: `
+    <p>
+      When we define a new Subject and try to send a new value (in this
+      case, sending a new value with the Subject Observer input), the Subject will not emit
+      any value. This is because, by default, <b>Subjects are lazy</b> and that
+      means that they need someone to be subscribed and listen to what they are
+      emitting.
+    </p>
+    <p>
+      In this case, when we try to send a new value with the left input, nothing
+      is going to happen because we're not subscribed to the Subject. Once we
+      hit the <b>Open subscriptions</b> button, we're going to be able to listen
+      to what the Subject is emitting.
+    </p>
+    <p>
+      By default,
+      <b
+        >Subjects don't have an initial value and don't return the current value
+      </b>
+      in the moment that we're subscribing to it, they are going to receive only
+      values sent by the <b>next()</b> method <u>while they're subscribed</u>.
+    </p>
+    <p>
+      This is why if we sent a value while we're not subscribed and later we
+      subscribe, we're not going to receive anything until we open the
+      subscription and send a new value.
+    </p>
+    `
+  }
 ];
 
 export const BEHAVIOR_SUBJECT_SECTION: SECTION[] = [
@@ -245,6 +276,37 @@ export const BEHAVIOR_SUBJECT_SECTION: SECTION[] = [
     </code>
     `,
   },
+  {
+    title: 'Example',
+    body: `
+    <p>Following the Subject's example, in this case:</p>
+    <ul>
+      <li>
+        <p>
+          If we click on the <b>Storaged value</b>, a Toast will be displayed
+          showing the last emitted value (or the last storaged value) from this
+          BehaviorSubject.
+        </p>
+      </li>
+      <li>
+        <p>
+          If we initially click on the <b>Open Subscriptions</b> button, every
+          Subject input will be filled with the last BehaviorSubject's emitted
+          value.
+        </p>
+      </li>
+      <li>
+        <p>
+          If we haven't subscribed yet to the BehaviorSubject and we sent a new
+          value with the <b>BehaviorSubject's next() method</b>, that value will
+          not be emitted, but it will be storaged in the BehaviorSubject's
+          <b>value</b> property. Later, when we subscribe to it, it will emit
+          the last storaged value.
+        </p>
+      </li>
+    </ul>
+    `
+  }
 ];
 
 export const REPLAY_SUBJECT_SECTION: SECTION[] = [
@@ -350,4 +412,57 @@ export const REPLAY_SUBJECT_SECTION: SECTION[] = [
     </code>
     `,
   },
+  {
+    title: 'Example',
+    body: `
+    <p>
+      In this case the ReplaySubject will store the last X amount of records
+      setted in the <b>Amount</b> input. For example:
+    </p>
+    <ul>
+      <li>
+        <p>
+          If we set an amount of 3 records and store (with <b>Next</b>) 5
+          values, whenever any of the three subscriptions <b>Open</b>, they will
+          store the last 3 recorded values by the ReplaySubject.
+        </p>
+      </li>
+      <li>
+        <p>
+          While the subscription is still open, the subscription is going to
+          continue receiving values sent by the ReplaySubject and will store it
+          in a local variable.
+        </p>
+      </li>
+      <li>
+        <p>
+          If we don't want to keep receiving data, we can <b>Close</b> the
+          stream of data and any value sent by the ReplaySubject won't be
+          stored.
+        </p>
+      </li>
+      <li>
+        <p>
+          If the subscriptions is closed and later is opened again, the
+          ReplaySubject will emit the last X recorded values to the subscription
+          and the input will be loaded with the previous values and the new
+          ones.
+        </p>
+      </li>
+      <li>
+        <p>
+          Any of the subscriptions are able to be restarted with the
+          <b>Restart</b> button and able to start again and receive data again
+          after clicking on the <b>Open</b> button.
+        </p>
+      </li>
+      <li>
+        <p>
+          The whole process is able to be restarted with the
+          <b>Restart ReplaySubject</b> button.
+        </p>
+      </li>
+    </ul>
+    `
+  }
 ];
