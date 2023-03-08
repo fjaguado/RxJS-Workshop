@@ -1,10 +1,13 @@
 <div class="d-flex row">
   <app-info-section [selectedData]="SUBJECT_SECTION[0]"></app-info-section>
+  <app-info-section [selectedData]="SUBJECT_SECTION[1]"></app-info-section>
+  <app-info-section [selectedData]="SUBJECT_SECTION[2]"></app-info-section>
+  <app-info-section [selectedData]="SUBJECT_SECTION[3]"></app-info-section>
   <div class="pb-4">
-    <h4>Example:</h4>
+    <h4>Example</h4>
     <p>
-      When we declare a new Subject and we try to send a new value (in this
-      case, sending a new value with the left input), the Subject will not emit
+      When we define a new Subject and try to send a new value (in this
+      case, sending a new value with the Subject Observer input), the Subject will not emit
       any value. This is because, by default, <b>Subjects are lazy</b> and that
       means that they need someone to be subscribed and listen to what they are
       emitting.
@@ -129,6 +132,4 @@
       >.
     </p>
   </div>
-  <app-info-section [selectedData]="SUBJECT_SECTION[1]"></app-info-section>
-  <app-info-section [selectedData]="SUBJECT_SECTION[2]"></app-info-section>
 </div>

@@ -7,6 +7,11 @@ export const SUBJECT_SECTION: SECTION[] = [
     <p>
       It's a special type of Observable that allows values to be multicasted to many Observers. While <b>plain Observables are unicast</b> (each subscribed Observer owns an independent execution of the Observable), <b>Subjects are multicast</b>.
     </p>
+    `,
+  },
+  {
+    title: 'How it works',
+    body: `
     <p>
       A Subject is like an Observable, but can multicast to many Observers. Subjects are like EventEmitters: <b>they maintain a registry of many listeners.</b>
     </p>
@@ -15,6 +20,8 @@ export const SUBJECT_SECTION: SECTION[] = [
     </p>
     <code>
     <pre>
+    import { Subject } from 'rxjs';
+
     const subject = new Subject();
 
     subject.subscribe((value) => console.log(value));
@@ -80,7 +87,7 @@ export const SUBJECT_SECTION: SECTION[] = [
     title: 'Observer privacy',
     body: `
       <p>
-        To prevent outside code from <u>calling next on a subject</u>, the method <b>asObservable()</b> exists. For example, we can create a method that returns the observable of the subject, so everyone that subscribes to it are able to listen to it:
+        To <u>prevent outside code from calling next on a subject</u>, the method <b>asObservable()</b> exists. For example, we can create a method that returns the observable of the subject, so everyone that subscribes to it are able to listen to it:
       </p>
       <code>
       <pre>
@@ -110,8 +117,16 @@ export const BEHAVIOR_SUBJECT_SECTION: SECTION[] = [
     <p>
       BehaviorSubject is a variant of a Subject which has a notion of the current value that it stores and emits to all new subscriptions. This <u>current value</u> is either <b>the item most recently emitted by the source observable</b> or <b>a seed/default value</b> if none has yet been emitted. 
     </p>
+    `,
+  },
+  {
+    title: 'How it works',
+    body: `
     <code>
-    <pre>
+    <pre class="mt-4">
+
+    import { BehaviorSubject } from 'rxjs';
+
     const behaviorSubject = new BehaviorSubject<string>('Initial value');
 
     // <i>you can synchronously access to its value with its .value property</i>
@@ -142,7 +157,7 @@ export const BEHAVIOR_SUBJECT_SECTION: SECTION[] = [
     `,
   },
   {
-    title: 'Accessing to its value',
+    title: 'Accessing its value',
     body: `
     <p> We have two ways to get the value of a BehaviorSubject:</p>
     <ul>
@@ -168,7 +183,7 @@ export const BEHAVIOR_SUBJECT_SECTION: SECTION[] = [
         </code>
       </li>
     </ul>
-    `
+    `,
   },
   {
     title: '',
@@ -237,74 +252,60 @@ export const REPLAY_SUBJECT_SECTION: SECTION[] = [
     title: '',
     body: `
     <p>
-      BehaviorSubject is a variant of a Subject which has a notion of the current value that it stores and emits to all new subscriptions. This <u>current value</u> is either <b>the item most recently emitted by the source observable</b> or <b>a seed/default value</b> if none has yet been emitted. 
-    </p>
-    <code>
-    <pre>
-    const behaviorSubject = new BehaviorSubject<string>('Initial value');
-
-    // <i>you can synchronously access to its value with its .value property</i>
-    const value = behaviorSubject.value;
-    console.log(value); // 'Initial value'
-
-    // <i>you can asynchronously access to its value with a simple Subscription</i>
-    behaviorSubject.subscribe(x => console.log(x)); // 'Initial Value'
-
-    // <i>or with an Observer object inside a Subscription</i>
-    behaviorSubject.subscribe({ 
-      next: (x) => console.log(x),
-      error: (x) => console.log(x),
-      complete: (x) => console.log(x)
-    });
-    </pre>
-    </code>
-    <p>
-      <b>Since there must always be a current value, BehaviorSubject requires an initial value during initialization</b> (if you want the last emitted value(s) on subscription, but do not want to supply a seed value, check out ReplaySubject instead).
-      This behavior means that you can always directly get the last emitted value from  the BehaviorSubject even if the subscriber subscribes much later than the value was stored. 
-    </p>
-    <p>
-      When an observer subscribes to a BehaviorSubject, it begins by first emitting the current value and then continues to emit any other items emitted by the source Observable(s) after the subscription. However, if the BehaviorSubject is in the stopped state, it will only emit COMPLETE or ERROR notification.
-    </p>
-    <p>
-      In case of an error on the source observable, BehaviorSubject will not emit any items to subsequent subscriptions. Instead, it will simply pass along the error notification from the source Observable to new subscriptions.
+      ReplaySubject is a variant of a Subject which keeps a cache of previous values emitted by a source observable and sends them to all new observers immediately on subscription. This behavior of replaying a sequence of old values to new subscribers is where the name for this type of a subject comes from.
     </p>
     `,
   },
   {
-    title: 'Accessing to its value',
+    title: 'How it works',
     body: `
-    <p> We have two ways to get the value of a BehaviorSubject:</p>
-    <ul>
-      <li>
-        <p>By accessing the .value property (synchronous)</p>
-        <code>
-          <pre>
-  const subject = new BehaviorSubject('Initial value');
-  const subjectValue = subject.value;
-  console.log(subjectValue); // 'Initial value'
-          </pre>
-        </code>
-      </li>
-      <li>
-        <p>
-          By opening a new subscription to the Subject (asynchronous)
-        </p>
-        <code>
-          <pre>
-  const subject = new BehaviorSubject('Initial value');
-  subject.subscribe(value => console.log(value)); // 'Initial value'
-          </pre>
-        </code>
-      </li>
-    </ul>
-    `
+    <code>
+    <pre class="mt-4">
+    
+    import { ReplaySubject } from 'rxjs';
+
+    const subject = new ReplaySubject(<i>bufferSize</i>, <i>windowTime</i>);
+
+    // bufferSize (optional): this will determine how many items are stored in the buffer, defaults to infinite.
+    // windowTime (optional): determine in milliseconds the amount of time to hold a value in the buffer before removing it from the buffer.
+    </pre>
+    </code>
+    <p>
+     When an observer subscribes to a ReplaySubject, the subject begins by first emitting all values from the cache and then continues to emit any other items emitted by the source observable after the subscription. 
+    </p>
+    <p>
+      When creating a ReplaySubject you can specify how many values you want to store in the buffer (bufferSize) and the amount of time to hold a value in the buffer before removing it from it (windowTime). Both configurations may exist simultaneously.
+    </p>
+    `,
+  },
+  {
+    title: 'Differences with BehaviorSubject',
+    body: `
+    <p>
+    ReplaySubject will replay the cached sequence of values even if the observer subscribes much later than the values were cached. This feature is similar to the BehaviorSubject in the way that it can send cached values to new subscribers, but <b>instead of just one current value, it can record and replay a whole series of values.</b>
+   </p>
+   <p>
+   There’s another more crucial difference: 
+   <ul>
+     <li>
+       <p>
+         Once <u>BehaviorSubject</u> receives the complete or the error notification and transitions into a stopped state, <b>all subsequent subscriptions will only receive the complete or the error notification</b> and will not receive the current value.
+       </p>
+     </li>
+     <li>
+       <p>
+         In contrast, even in the stopped state in case of a completion or an error on the source observable, <u>ReplaySubject</u> still <b>replays the cached values before sending the complete or the error notification</b> to new subsequent subscriptions.
+       </p>
+     </li>
+   </ul>
+    `,
   },
   {
     title: '',
     body: `
     <div class="d-flex justify-content-center">
       <video id="player" playsinline controls>
-        <source src="https://images.indepth.dev/references/rxjs/subjects/behavior-subject.mp4" type="video/mp4" />
+        <source src="https://images.indepth.dev/references/rxjs/subjects/replay-subject.mp4" type="video/mp4" />
       </video>
     </div>
     `,
@@ -313,48 +314,38 @@ export const REPLAY_SUBJECT_SECTION: SECTION[] = [
     title: 'Common usage',
     body: `
     <p>
-      A most common use case for BehaviorSubject is to act as a store or a cache that subscribers can read the latest value when they need it. Here’s an example that demonstrates a basic implementation of a store:
+      ReplaySubject is commonly used when you need to replay an event or a series of events. Since ReplaySubject doesn’t need a default value as opposed to BehaviorSubject, it’s a handy mechanism to use if an event may never even occur.
     </p>
     <code>
     <pre>
-    interface State {
-      name: string;
-      age: number
-    }
-
-    export class BehaviorSubjectExample implements OnInit {
-
-      public state1: State = { name: 'James', age: 33 };
-      public state2: State = { name: 'Anna', age: 27 };
-      
-      public store = new BehaviorSubject(this.state1);
-
-      public ngOnInit(): void {          
-        const v1 = this.getValueFromStore();
-        console.log(v1.name); // 'James'
-        
-        this.updateStore(this.state2);
-        
-        const v2 = this.getValueFromStore();
-        console.log(v2.name); // 'Anna'
-        
-        this.selectFromStore().subscribe(v => console.log(v)); // 27
-      }
-      
-      private updateStore(v): void {
-        store.next(v);
-      }
-      
-      private getValueFromStore(): State {
-        return store.value;
-      }
-      
-      private selectFromStore(): Observable<number> {
-        return this.store.asObservable().pipe(
-            map(state => state.age) // this will get the stored state's age and will return it
-        );
-      }
-    }
+    import { ReplaySubject } from 'rxjs';
+  
+    const subject = new ReplaySubject(3); // buffer 3 values for new subscribers
+     
+    subject.subscribe(v => console.log('observerA:', v'));
+     
+    subject.next(1);
+    subject.next(2);
+    subject.next(3);
+    subject.next(4);
+     
+    subject.subscribe(v => console.log('observerB:', 'v'));
+     
+    subject.next(5);
+     
+    // Logs:
+    // observerA: 1
+    // observerA: 2
+    // observerA: 3
+    // observerA: 4
+  
+    // When ObserverB starts to receive data, it will emit the last 3 recorded values by this subject
+    // observerB: 2
+    // observerB: 3
+    // observerB: 4
+  
+    // observerA: 5
+    // observerB: 5
     </pre>
     </code>
     `,

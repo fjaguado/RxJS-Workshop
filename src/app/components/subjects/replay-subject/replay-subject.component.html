@@ -1,47 +1,112 @@
 <div class="d-flex row">
-  <app-info-section
+  <!-- <app-info-section
     [selectedData]="REPLAY_SUBJECT_SECTION[0]"
   ></app-info-section>
   <app-info-section
     [selectedData]="REPLAY_SUBJECT_SECTION[1]"
   ></app-info-section>
+  <app-info-section
+    [selectedData]="REPLAY_SUBJECT_SECTION[3]"
+  ></app-info-section>
+  <app-info-section
+    [selectedData]="REPLAY_SUBJECT_SECTION[2]"
+  ></app-info-section> -->
   <div class="pb-4">
-    <h4>Example:</h4>
-    <p>Following the Subject's example, in this case:</p>
+    <h4>Example</h4>
+    <p>
+      In this case the ReplaySubject will store the last X amount of records
+      setted in the <b>Amount</b> input. For example:
+    </p>
     <ul>
       <li>
         <p>
-          If we click on the <b>Storaged value</b>, a Toast will be displayed
-          showing the last emitted value (or the last storaged value) from this
-          ReplaySubject.
+          If we set an amount of 3 records and store (with <b>Next</b>) 5
+          values, whenever any of the three subscriptions <b>Open</b>, they will
+          store the last 3 recorded values by the ReplaySubject.
         </p>
       </li>
       <li>
         <p>
-          If we initially click on the <b>Open Subscriptions</b> button, every
-          Subject input will be filled with the last ReplaySubject's emitted
-          value.
+          While the subscription is still open, the subscription is going to
+          continue receiving values sent by the ReplaySubject and will store it
+          in a local variable.
         </p>
       </li>
       <li>
         <p>
-          If we haven't subscribed yet to the ReplaySubject and we sent a new
-          value with the <b>ReplaySubject's next() method</b>, that value will
-          not be emitted, but it will be storaged in the ReplaySubject's
-          <b>value</b> property. Later, when we subscribe to it, it will emit
-          the last storaged value.
+          If we don't want to keep receiving data, we can <b>Close</b> the
+          stream of data and any value sent by the ReplaySubject won't be
+          stored.
+        </p>
+      </li>
+      <li>
+        <p>
+          If the subscriptions is closed and later is opened again, the
+          ReplaySubject will emit the last X recorded values to the subscription
+          and the input will be loaded with the previous values and the new
+          ones.
+        </p>
+      </li>
+      <li>
+        <p>
+          Any of the subscriptions are able to be restarted with the
+          <b>Restart</b> button and able to start again and receive data again
+          after clicking on the <b>Open</b> button.
+        </p>
+      </li>
+      <li>
+        <p>
+          The whole process is able to be restarted with the
+          <b>Restart ReplaySubject</b> button.
         </p>
       </li>
     </ul>
-    <div class="alert alert-success" *ngIf="showReplaySubjectValue">
-      Storaged value:
-    </div>
-    <div class="alert alert-danger" *ngIf="replaySubject.closed">
-      ReplaySubject closed! You'll not be able to subscribe it again and you'll
-      not be able to accesss to its value because it's closed!
-    </div>
-    <div class="pt-3 d-flex column gap-5">
-      <div class="d-flex row align-content-center">
+    <div class="pt-3 d-flex column gap-3">
+      <div class="row">
+        <div class="row align-content-center">
+          <div class="form-text">Set an amount of values to be recorded!</div>
+          <div class="input-group align-items-center">
+            <input
+              type="number"
+              min="1"
+              class="form-control"
+              placeholder="Amount"
+              name="amountOfRecords"
+              [(ngModel)]="amountOfRecords"
+              [disabled]="subjectExecuted"
+            />
+          </div>
+        </div>
+        <div class="row align-content-center">
+          <div class="form-text">
+            Set in ms the time that data will be stored!
+          </div>
+          <div class="input-group align-items-center">
+            <input
+              type="number"
+              min="1"
+              class="form-control"
+              placeholder="Window time"
+              name="windowTime"
+              [(ngModel)]="windowTime"
+              [disabled]="subjectExecuted"
+            />
+          </div>
+        </div>
+        <div class="row align-content-center">
+          <div class="input-group justify-content-center">
+            <button
+              class="btn btn-outline-primary"
+              type="button"
+              (click)="startSubject()"
+              [disabled]="subjectExecuted"
+            >
+              Start ReplaySubject
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row gap-1">
         <div class="form-text">ReplaySubject Observer</div>
         <div class="input-group align-items-center">
           <input
@@ -50,25 +115,49 @@
             placeholder="Send a value!"
             name="subjectValue"
             [(ngModel)]="subjectValue"
+            [disabled]="!subjectExecuted"
           />
           <button
             class="btn btn-outline-secondary"
             type="button"
             (click)="doSendValue()"
+            [disabled]="!subjectExecuted"
           >
             Next
           </button>
         </div>
-      </div>
-      <div class="d-flex row gap-1">
         <div class="form-text">ReplaySubject 1 (Observable / Listener)</div>
         <div class="input-group mb-3">
           <input
             type="text"
             class="form-control"
             disabled
-            [value]="receivedValue1"
+            value="[{{ receivedValue1.toString() }}]"
           />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="openSubscription('obs1')"
+            [disabled]="!subjectExecuted"
+          >
+            Open
+          </button>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="closeSubscription('obs1')"
+            [disabled]="!subjectExecuted"
+          >
+            Close
+          </button>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="restartSubscription('obs1')"
+            [disabled]="!subjectExecuted"
+          >
+            Restart
+          </button>
         </div>
         <div class="form-text">ReplaySubject 2 (Observable / Listener)</div>
         <div class="input-group mb-3">
@@ -76,8 +165,32 @@
             type="text"
             class="form-control"
             disabled
-            [value]="receivedValue2"
+            value="[{{ receivedValue2.toString() }}]"
           />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="openSubscription('obs2')"
+            [disabled]="!subjectExecuted"
+          >
+            Open
+          </button>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="closeSubscription('obs2')"
+            [disabled]="!subjectExecuted"
+          >
+            Close
+          </button>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="restartSubscription('obs2')"
+            [disabled]="!subjectExecuted"
+          >
+            Restart
+          </button>
         </div>
         <div class="form-text">ReplaySubject 3 (Observable / Listener)</div>
         <div class="input-group mb-3">
@@ -85,8 +198,32 @@
             type="text"
             class="form-control"
             disabled
-            [value]="receivedValue3"
+            value="[{{ receivedValue3.toString() }}]"
           />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="openSubscription('obs3')"
+            [disabled]="!subjectExecuted"
+          >
+            Open
+          </button>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="closeSubscription('obs3')"
+            [disabled]="!subjectExecuted"
+          >
+            Close
+          </button>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="restartSubscription('obs3')"
+            [disabled]="!subjectExecuted"
+          >
+            Restart
+          </button>
         </div>
       </div>
     </div>
@@ -94,44 +231,14 @@
       <button
         class="btn btn-outline-secondary"
         type="button"
-        (click)="showStoragedValue()"
-      >
-        Storaged value
-      </button>
-      <button
-        class="btn btn-outline-secondary"
-        type="button"
-        (click)="openSubscriptions()"
-      >
-        Open subscriptions
-      </button>
-      <button
-        class="btn btn-outline-secondary"
-        type="button"
-        (click)="closeSubscriptions()"
-      >
-        Close subscriptions
-      </button>
-      <button
-        class="btn btn-outline-secondary"
-        type="button"
-        (click)="closeSubject()"
-      >
-        Close ReplaySubject
-      </button>
-      <button
-        class="btn btn-outline-secondary"
-        type="button"
         (click)="restartSubject()"
+        [disabled]="!subjectExecuted"
       >
         Restart ReplaySubject
       </button>
     </div>
   </div>
   <app-info-section
-    [selectedData]="REPLAY_SUBJECT_SECTION[2]"
-  ></app-info-section>
-  <app-info-section
-    [selectedData]="REPLAY_SUBJECT_SECTION[3]"
+    [selectedData]="REPLAY_SUBJECT_SECTION[4]"
   ></app-info-section>
 </div>

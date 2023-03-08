@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { BEHAVIOR_SUBJECT_SECTION } from '../subjects.data';
 

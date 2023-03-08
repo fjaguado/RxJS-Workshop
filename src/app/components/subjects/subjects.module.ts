@@ -5,8 +5,13 @@ import { SubjectComponent } from './subject/subject.component';
 import { BehaviorSubjectComponent } from './behavior-subject/behavior-subject.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { ReplaySubjectComponent } from './replay-subject/replay-subject.component';
 
-const COMPONENTS = [SubjectComponent, BehaviorSubjectComponent];
+const COMPONENTS = [
+  SubjectComponent,
+  BehaviorSubjectComponent,
+  ReplaySubjectComponent,
+];
 const MODULES = [
   CommonModule,
   SubjectsRoutingModule,
