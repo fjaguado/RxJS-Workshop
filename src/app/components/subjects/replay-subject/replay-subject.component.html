@@ -1,5 +1,4 @@
 <div class="d-flex row">
-  <app-code-tabs></app-code-tabs>
   <app-info-section
     [selectedData]="REPLAY_SUBJECT_SECTION[0]"
   ></app-info-section>
@@ -192,6 +191,7 @@
         Restart ReplaySubject
       </button>
     </div>
+    <app-code-tabs [tsCode]="tsCode" [htmlCode]="htmlCode"></app-code-tabs>
   </div>
   <app-info-section
     [selectedData]="REPLAY_SUBJECT_SECTION[4]"

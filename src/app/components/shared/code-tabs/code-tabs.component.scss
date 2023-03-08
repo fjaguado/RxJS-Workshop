@@ -1,16 +1,22 @@
-.bd-example {
+.code-tabs-border {
   @media (min-width: 768px) {
-    --bd-example-padding: 1.5rem;
+    --bd-example-padding: 0.5rem;
     margin-right: 0;
     margin-left: 0;
     border-width: 1px;
     border-top-left-radius: var(--bs-border-radius);
     border-top-right-radius: var(--bs-border-radius);
   }
-  --bd-example-padding: 1rem;
+  --bd-example-padding: 0.5rem;
   position: relative;
   padding: var(--bd-example-padding);
   margin: 0 -1.5rem;
   border: solid var(--bs-border-color);
   border-width: 1px 0;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--bs-accordion-btn-bg);
+  box-shadow: none;
+  color: #212529;
 }
