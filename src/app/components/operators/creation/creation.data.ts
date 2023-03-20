@@ -16,7 +16,7 @@ export const OF_CREATION_SECTION: SECTION[] = [
     title: 'Usage',
     body: `
     <p>
-      It is commonly used when you simply need to return a value where an observable is expected or start an observable chain. This is a common need when using combination operators like mergeMap. Here’s an example that checks if there’s a cached value for the URL and if so, returns the value immediately, otherwise it makes a request:
+      It is commonly used when you simply need to return a value where an observable is expected or start an observable chain. 
     </p>
     <code>
     <pre>

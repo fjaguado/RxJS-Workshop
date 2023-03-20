@@ -7,4 +7,43 @@
     imgSrc="https://rxjs.dev/assets/images/marble-diagrams/of.png"
   ></app-imported-content>
   <app-info-section [selectedData]="OF_CREATION_SECTION[1]"></app-info-section>
+  <div class="pt-3 d-flex column gap-5">
+    <div class="row gap-1">
+      <div class="form-text">of Operator</div>
+      <div class="input-group align-items-center">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Send a value!"
+          name="ofInputValue"
+          [(ngModel)]="ofInputValue"
+        />
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="doSendValue()"
+        >
+          Send!
+        </button>
+      </div>
+      <div class="form-text mt-3">Of Subscription</div>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          disabled
+          value="{{ sentValue.toString() }}"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center py-4 gap-3">
+    <button
+      class="btn btn-outline-secondary"
+      type="button"
+      (click)="restartOperator()"
+    >
+      Restart operator
+    </button>
+  </div>
 </div>
