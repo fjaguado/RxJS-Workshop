@@ -13,13 +13,6 @@ export const OF_CREATION_SECTION: SECTION[] = [
   `,
   },
   {
-    title: '',
-    body: `
-      <app-imported-content [videoSrc]="https://images.indepth.dev/references/rxjs/operators/of.mp4"></app-imported-content>
-      <app-imported-content [imgSrc]="https://rxjs.dev/assets/images/marble-diagrams/of.png"></app-imported-content>
-    `,
-  },
-  {
     title: 'Usage',
     body: `
     <p>
