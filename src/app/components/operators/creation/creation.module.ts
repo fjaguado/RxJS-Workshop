@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OfFromFromEventComponent } from './of-from-from-event/of-from-from-event.component';
+import { OfComponent } from './of/of.component';
 import { CreationRoutingModule } from './creation-routing.module';
+import { SharedModule } from '../../shared/shared.module';
 
-const COMPONENTS = [OfFromFromEventComponent];
-const MODULES = [CommonModule, CreationRoutingModule];
+const COMPONENTS = [OfComponent];
+const MODULES = [CommonModule, CreationRoutingModule, SharedModule];
 
 @NgModule({
   imports: [...MODULES],

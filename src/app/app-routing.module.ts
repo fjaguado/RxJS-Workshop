@@ -29,7 +29,7 @@ const routes: Routes = [
         (m) => m.SubjectsModule
       ),
   })),
-  ...[ROUTES.OF_FROM_FROMEVENT].map(() => ({
+  ...[ROUTES.OF, ROUTES.FROM, ROUTES.FROMEVENT].map(() => ({
     path: '',
     loadChildren: () =>
       import('./components/operators/creation/creation.module').then(

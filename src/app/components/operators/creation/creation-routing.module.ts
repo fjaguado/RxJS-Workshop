@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ROUTES } from 'src/app/models/menu.model';
-import { OfFromFromEventComponent } from './of-from-from-event/of-from-from-event.component';
+import { ROUTES } from '../../../models/menu.model';
+import { OfComponent } from './of/of.component';
 
 const routes: Routes = [
   {
-    path: ROUTES.OF_FROM_FROMEVENT,
-    component: OfFromFromEventComponent,
+    path: ROUTES.OF,
+    component: OfComponent,
+  },
+  {
+    path: ROUTES.FROM,
+    component: OfComponent,
+  },
+  {
+    path: ROUTES.FROMEVENT,
+    component: OfComponent,
   },
 ];
 

@@ -83,8 +83,18 @@ export class SideNavbarComponent {
       isSelectable: false,
       childLinks: [
         {
-          title: 'of / from / fromEvent',
-          url: ROUTES.OF_FROM_FROMEVENT,
+          title: 'of',
+          url: ROUTES.OF,
+          isSelectable: true,
+        },
+        {
+          title: 'from',
+          url: ROUTES.FROM,
+          isSelectable: true,
+        },
+        {
+          title: 'fromEvent',
+          url: ROUTES.FROMEVENT,
           isSelectable: true,
         },
       ],
