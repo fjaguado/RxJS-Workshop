@@ -5,7 +5,7 @@ export const OF_CREATION_SECTION: SECTION[] = [
     title: '',
     body: `
     <p>
-      This operator is used to emit arguments as values in a sequence and then complete the stream.
+      This operator is used to emit arguments as values in a sequence and then <b>complete the stream.</b>
     </p>
     <p>
       Unlike <b>from</b>, it does not do any flattening or conversion and emits each argument as the same type it receives as arguments. If you pass it an Array (including array-like objects), a Promise and an iterable object it won’t be flattened into an observable sequence of values. <b>Those arguments will be emitted as the same type, i.e. an Array, a Promise or an Iterable object <u>without any conversion</u>.</b>

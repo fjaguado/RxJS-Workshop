@@ -1,22 +1,24 @@
 <div class="d-flex row">
   <app-info-section [selectedData]="OF_CREATION_SECTION[0]"></app-info-section>
   <app-imported-content
-    videoSrc="https://images.indepth.dev/references/rxjs/operators/of.mp4"
+    [videoSrc]="'https://images.indepth.dev/references/rxjs/operators/of.mp4'"
   ></app-imported-content>
   <app-imported-content
-    imgSrc="https://rxjs.dev/assets/images/marble-diagrams/of.png"
+    [imgSrc]="'https://rxjs.dev/assets/images/marble-diagrams/of.png'"
   ></app-imported-content>
   <app-info-section [selectedData]="OF_CREATION_SECTION[1]"></app-info-section>
-  <div class="pt-3 d-flex column gap-5">
-    <div class="row gap-1">
-      <div class="form-text">of Operator</div>
+  <h4>Example</h4>
+  <div class="d-flex pt-3 column gap-3">
+    <div class="col-6">
+      <div class="form-text">of() Operator</div>
       <div class="input-group align-items-center">
         <input
           type="text"
           class="form-control"
           placeholder="Send a value!"
-          name="ofInputValue"
-          [(ngModel)]="ofInputValue"
+          name="inputtedValue"
+          [(ngModel)]="inputtedValue"
+          (keyup.enter)="doSendValue()"
         />
         <button
           class="btn btn-outline-secondary"
@@ -26,7 +28,9 @@
           Send!
         </button>
       </div>
-      <div class="form-text mt-3">Of Subscription</div>
+    </div>
+    <div class="col-6">
+      <div class="form-text">of() Subscription</div>
       <div class="input-group mb-3">
         <input
           type="text"
