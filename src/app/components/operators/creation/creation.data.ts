@@ -118,3 +118,61 @@ export const FROM_CREATION_SECTION: SECTION[] = [
     `,
   },
 ];
+
+export const FROM_EVENT_CREATION_SECTION: SECTION[] = [
+  {
+    title: '',
+    body: `
+    <p>
+      Creates an Observable that emits events of a specific type coming from the given event target. 
+      <ol>
+        <li>
+          It accepts as a first argument event target, which is an object with methods for registering event handler functions.
+        </li>
+        <li>
+        As a second argument it takes string that indicates type of event we want to listen for.
+        </li>
+      </ol>
+    </p>
+    <p>
+      Every time resulting Observable is subscribed, event handler function will be registered to event target on given event type. When that event fires, value passed as a first argument to registered function will be emitted by output Observable. When Observable is unsubscribed, function will be unregistered from event target.
+    </p>
+    `,
+  },
+  {
+    title: 'Usage',
+    body: `
+    <p>
+      fromEvent is commonly used when you need to create an Observable from a specific document event (you can use whatever Javascript exist event, it works like the addEventListener method). The only thing that you have to keep in mind is that you need to link this operator with a document ElementRef and you can do it by using the ViewChild decorator.
+    </p>
+    <code>
+    <pre>
+    import { fromEvent } from 'rxjs';
+
+    const clicks = fromEvent(document, 'click');
+    clicks.subscribe(x => console.log(x));
+    
+    // Results in:
+    // MouseEvent object logged to console every time a click
+    // occurs on the document.
+    </pre>
+    </code>
+    `,
+  },
+  {
+    title: 'Click event example',
+    body: `
+      <p>
+        In this scenario we've attached the fromEvent() operator with the input and button reference, so whenever we click on any of them, the operator will fire a stream of data with the Mouseover Event's object.
+      </p>
+    `,
+  },
+  {
+    title: 'Mouseover event example',
+    body: `
+    <p>
+      In this scenario we've attached the fromEvent() operator with the input and button reference, so whenever we move the mouse over any of them, the operator will fire a stream of data with the Mouseover Event's object.
+    </p>
+    `,
+  },
+];

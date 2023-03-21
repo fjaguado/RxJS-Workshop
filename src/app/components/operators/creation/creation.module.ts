@@ -5,8 +5,9 @@ import { CreationRoutingModule } from './creation-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { FromComponent } from './from/from.component';
+import { FromEventComponent } from './from-event/from-event.component';
 
-const COMPONENTS = [OfComponent, FromComponent];
+const COMPONENTS = [OfComponent, FromComponent, FromEventComponent];
 const MODULES = [
   CommonModule,
   CreationRoutingModule,

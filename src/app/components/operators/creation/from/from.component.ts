@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { from, Subscription } from 'rxjs';
 import { FROM_CREATION_SECTION } from '../creation.data';
 
@@ -6,7 +6,7 @@ import { FROM_CREATION_SECTION } from '../creation.data';
   selector: 'app-from',
   templateUrl: './from.component.html',
 })
-export class FromComponent {
+export class FromComponent implements OnDestroy {
   public FROM_CREATION_SECTION = FROM_CREATION_SECTION;
 
   public fromArraySubscription = new Subscription();
@@ -20,6 +20,11 @@ export class FromComponent {
   public sentPromiseValue = '';
   public tsPromiseCode = getTsFromPromiseCode();
   public htmlPromiseCode = getHTMLFromPromiseCode();
+
+  public ngOnDestroy(): void {
+    this.fromArraySubscription.unsubscribe();
+    this.fromPromiseSubscription.unsubscribe();
+  }
 
   public doSendArrayValue(): void {
     if (!this.fromArraySubscription.closed) {
@@ -63,12 +68,16 @@ const getTsFromArrayCode = (): string => `
     selector: 'app-from',
     templateUrl: './from.component.html',
   })
-  export class FromComponent {
+  export class FromComponent implements OnDestroy {
     public fromArraySubscription = new Subscription();
     public arrayValue = [10, 20, 40, 50, 60];
     public sentArrayValue = '';
     public tsArrayCode = '';
     public htmlArrayCode = '';
+
+    public ngOnDestroy(): void {
+      this.fromArraySubscription.unsubscribe();
+    }
 
     public doSendArrayValue(): void {
       if (!this.fromArraySubscription.closed) {
@@ -142,10 +151,14 @@ const getTsFromPromiseCode = (): string => `
     selector: 'app-from',
     templateUrl: './from.component.html',
   })
-  export class FromComponent {
+  export class FromComponent implements OnDestroy {
     public fromPromiseSubscription = new Subscription();
     public promiseValue = 'https://api.publicapis.org/entries';
     public sentPromiseValue = '';
+
+    public ngOnDestroy(): void {
+      this.fromPromiseSubscription.unsubscribe();
+    }
 
     public doSendPromiseValue(): void {
       if (!this.fromPromiseSubscription.closed) {

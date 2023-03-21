@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { of, Subscription } from 'rxjs';
 import { OF_CREATION_SECTION } from '../creation.data';
 
@@ -6,7 +6,7 @@ import { OF_CREATION_SECTION } from '../creation.data';
   selector: 'app-of',
   templateUrl: './of.component.html',
 })
-export class OfComponent {
+export class OfComponent implements OnDestroy {
   public OF_CREATION_SECTION = OF_CREATION_SECTION;
   public ofSubscription = new Subscription();
   public inputtedValue = '';
@@ -14,6 +14,10 @@ export class OfComponent {
 
   public tsCode = getOfComponentTsCode();
   public htmlCode = getOfComponentHTMLCode();
+
+  public ngOnDestroy(): void {
+    this.ofSubscription.unsubscribe();
+  }
 
   public doSendValue(): void {
     if (!this.ofSubscription.closed) {
@@ -40,10 +44,14 @@ const getOfComponentTsCode = (): string => `
     selector: 'app-of',
     templateUrl: './of.component.html',
   })
-  export class OfComponent {
+  export class OfComponent implements OnDestroy {
     public ofSubscription = new Subscription();
     public inputtedValue = '';
     public sentValue = '';
+
+    public ngOnDestroy(): void {
+      this.ofSubscription.unsubscribe();
+    }
   
     public doSendValue(): void {
       if (!this.ofSubscription.closed) {
