@@ -1,0 +1,111 @@
+<div class="d-flex row">
+  <app-info-section
+    [selectedData]="FROM_EVENT_CREATION_SECTION[0]"
+  ></app-info-section>
+  <app-imported-content
+    [imgSrc]="'https://rxjs.dev/assets/images/marble-diagrams/fromEvent.png'"
+  ></app-imported-content>
+  <app-info-section
+    [selectedData]="FROM_EVENT_CREATION_SECTION[1]"
+  ></app-info-section>
+  <div class="mb-4">
+    <app-info-section
+      [selectedData]="FROM_EVENT_CREATION_SECTION[2]"
+    ></app-info-section>
+    <div class="d-flex pt-3 column gap-3">
+      <div class="col-6">
+        <div class="form-text">fromEvent() Click Operator</div>
+        <div class="input-group align-items-center">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Click on me!"
+            #fromEventClickInput
+          />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            #fromEventClickButton
+          >
+            Or click here!
+          </button>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-text">fromEvent() Click Subscription</div>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            disabled
+            value="{{ clickEventValue.toString() }}"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center py-4 gap-3">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="restartClickOperator()"
+      >
+        Restart operator
+      </button>
+    </div>
+    <app-code-tabs
+      [tsCode]="tsFromEventClickCode"
+      [htmlCode]="htmlFromEventClickCode"
+      [tabID]="'fromEventClick'"
+    ></app-code-tabs>
+  </div>
+  <div class="mt-4">
+    <app-info-section
+      [selectedData]="FROM_EVENT_CREATION_SECTION[3]"
+    ></app-info-section>
+    <div class="d-flex pt-3 column gap-3">
+      <div class="col-6">
+        <div class="form-text">fromEvent() Mouseover Operator</div>
+        <div class="input-group align-items-center">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Move the cursor over here!"
+            #fromEventMouseoverInput
+          />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            #fromEventMouseoverButton
+          >
+            Or here!
+          </button>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-text">fromEvent() Blur Subscription</div>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            disabled
+            value="{{ mouseoverEventValue }}"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center py-4 gap-3">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="restartMouseoverOperator()"
+      >
+        Restart operator
+      </button>
+    </div>
+    <app-code-tabs
+      [tsCode]="tsFromEventMouseoverCode"
+      [htmlCode]="htmlFromEventMouseoverCode"
+      [tabID]="'fromEventMouseover'"
+    ></app-code-tabs>
+  </div>
+</div>

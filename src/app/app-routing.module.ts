@@ -36,10 +36,6 @@ const routes: Routes = [
         (m) => m.CreationModule
       ),
   })),
-  {
-    path: '**',
-    redirectTo: '',
-  },
   ...[ROUTES.COMBINE_LATEST].map(() => ({
     path: '',
     loadChildren: () =>

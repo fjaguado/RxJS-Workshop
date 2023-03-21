@@ -1,0 +1,117 @@
+<div class="d-flex row">
+  <app-info-section
+    [selectedData]="FROM_CREATION_SECTION[0]"
+  ></app-info-section>
+  <app-imported-content
+    [imgSrc]="'https://rxjs.dev/assets/images/marble-diagrams/from.png'"
+  ></app-imported-content>
+  <app-imported-content
+    [videoSrc]="'https://images.indepth.dev/references/rxjs/operators/from.mp4'"
+  ></app-imported-content>
+  <app-info-section
+    [selectedData]="FROM_CREATION_SECTION[1]"
+  ></app-info-section>
+  <div class="mb-4">
+    <app-info-section
+      [selectedData]="FROM_CREATION_SECTION[2]"
+    ></app-info-section>
+    <div class="d-flex pt-3 column gap-3">
+      <div class="col-6">
+        <div class="form-text">from() Array Operator</div>
+        <div class="input-group align-items-center">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Send an array!"
+            [value]="arrayValue.toString()"
+            disabled
+          />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="doSendArrayValue()"
+          >
+            Send!
+          </button>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-text">from() Array Subscription</div>
+        <div class="input-group mb-3">
+          <textarea
+            type="text"
+            class="form-control"
+            disabled
+            value="{{ sentArrayValue.toString() }}"
+            style="height: 170px"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center py-4 gap-3">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="restartArrayOperator()"
+      >
+        Restart operator
+      </button>
+    </div>
+    <app-code-tabs
+      [tsCode]="tsArrayCode"
+      [htmlCode]="htmlArrayCode"
+      [tabID]="'fromArray'"
+    ></app-code-tabs>
+  </div>
+  <div class="mt-4">
+    <app-info-section
+      [selectedData]="FROM_CREATION_SECTION[3]"
+    ></app-info-section>
+    <div class="d-flex pt-3 column gap-3">
+      <div class="col-6">
+        <div class="form-text">from() Promise Operator</div>
+        <div class="input-group align-items-center">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Set an URL to fetch a JSON!"
+            [(ngModel)]="promiseValue"
+          />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="doSendPromiseValue()"
+          >
+            Send!
+          </button>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-text">from() Promise Subscription</div>
+        <div class="input-group mb-3">
+          <textarea
+            type="text"
+            class="form-control"
+            disabled
+            [ngModel]="sentPromiseValue"
+            style="height: 170px"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center py-4 gap-3">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="restarPromiseOperator()"
+      >
+        Restart operator
+      </button>
+    </div>
+    <app-code-tabs
+      [tsCode]="tsPromiseCode"
+      [htmlCode]="htmlPromiseCode"
+      [tabID]="'fromPromise'"
+    ></app-code-tabs>
+  </div>
+</div>
