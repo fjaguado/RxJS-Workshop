@@ -111,8 +111,7 @@ export class BehaviorSubjectComponent {
   }
 }
 
-function getBehaviorSubjectTSCode(): string {
-  return `
+const getBehaviorSubjectTSCode = (): string => `
   import { Component } from '@angular/core';
   import { BehaviorSubject, Observable, Subscription } from 'rxjs';
   import { BEHAVIOR_SUBJECT_SECTION } from '../subjects.data';
@@ -217,10 +216,8 @@ function getBehaviorSubjectTSCode(): string {
     }
   }
   `;
-}
 
-function getBehaviorSubjectHTMLCode(): string {
-  return `
+const getBehaviorSubjectHTMLCode = (): string => `
   <div class="alert alert-success" *ngIf="showBehaviorSubjectValue">
     Storaged value: {{ getStoragedValue() }}
   </div>
@@ -316,4 +313,3 @@ function getBehaviorSubjectHTMLCode(): string {
     </button>
   </div>
   `;
-}

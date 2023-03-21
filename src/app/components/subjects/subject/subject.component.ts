@@ -101,8 +101,7 @@ export class SubjectComponent {
   }
 }
 
-function getSubjectTSCode(): string {
-  return `
+const getSubjectTSCode = (): string => `
   import { Component } from '@angular/core';
   import { Observable, Subject, Subscription } from 'rxjs';
   import { SUBJECT_SECTION } from '../subjects.data';
@@ -197,10 +196,9 @@ function getSubjectTSCode(): string {
     }
   }
   `;
-}
 
-function getSubjectHTMLCode(): string {
-  return `
+
+const getSubjectHTMLCode = (): string => `
   <div class="pb-4">
     <app-info-section [selectedData]="SUBJECT_SECTION[4]"></app-info-section>
     <div class="alert alert-danger" *ngIf="subject.closed">
@@ -305,4 +303,4 @@ function getSubjectHTMLCode(): string {
     </p>
   </div>
   `;
-}
+

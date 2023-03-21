@@ -139,8 +139,7 @@ export class ReplaySubjectComponent {
   }
 }
 
-function getReplaySubjectTSCode(): string {
-  return `
+const getReplaySubjectTSCode = (): string => `
   import { Component } from '@angular/core';
   import { Observable, ReplaySubject, Subscription } from 'rxjs';
   import { REPLAY_SUBJECT_SECTION } from '../subjects.data';
@@ -269,10 +268,9 @@ function getReplaySubjectTSCode(): string {
     }
   }
   `;
-}
 
-function getReplaySubjectHTMLCode(): string {
-  return `
+
+const getReplaySubjectHTMLCode = (): string => `
   <div class="pt-3 d-flex column gap-3">
   <div class="row">
     <div class="row align-content-center">
@@ -450,4 +448,4 @@ function getReplaySubjectHTMLCode(): string {
     </button>
   </div>
   `;
-}
+

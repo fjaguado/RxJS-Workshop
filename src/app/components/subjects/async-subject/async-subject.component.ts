@@ -122,8 +122,7 @@ export class AsyncSubjectComponent {
   }
 }
 
-function getAsyncSubjectTSCode(): string {
-  return `
+const getAsyncSubjectTSCode = (): string => `
   import { Component } from '@angular/core';
   import { AsyncSubject, Observable, Subscription } from 'rxjs';
   import { ASYNC_SUBJECT_SECTION } from '../subjects.data';
@@ -239,10 +238,8 @@ function getAsyncSubjectTSCode(): string {
     }
   }
   `;
-}
 
-function getAsyncSubjectHTMLCode(): string {
-  return `
+const getAsyncSubjectHTMLCode = (): string => `
     <div class="pt-3 d-flex column gap-5">
       <div class="row gap-1">
         <div class="form-text">AsyncSubject Observer</div>
@@ -383,4 +380,3 @@ function getAsyncSubjectHTMLCode(): string {
       </button>
     </div>
   `;
-}
