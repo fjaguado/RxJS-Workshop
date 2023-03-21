@@ -36,11 +36,19 @@ const routes: Routes = [
         (m) => m.CreationModule
       ),
   })),
-  ...[ROUTES.COMBINE_LATEST].map(() => ({
+  ...[
+    ROUTES.COMBINE_LATEST,
+    ROUTES.WITH_LATEST_FROM,
+    ROUTES.CONCAT,
+    ROUTES.MERGE,
+    ROUTES.START_WITH,
+    ROUTES.FORK_JOIN,
+    ROUTES.ZIP,
+  ].map(() => ({
     path: '',
     loadChildren: () =>
-      import('./components/operators/1.creation/creation.module').then(
-        (m) => m.CreationModule
+      import('./components/operators/2.combination/combination.module').then(
+        (m) => m.CombinationModule
       ),
   })),
   {

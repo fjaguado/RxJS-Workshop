@@ -72,8 +72,6 @@ const getTsFromArrayCode = (): string => `
     public fromArraySubscription = new Subscription();
     public arrayValue = [10, 20, 40, 50, 60];
     public sentArrayValue = '';
-    public tsArrayCode = '';
-    public htmlArrayCode = '';
 
     public ngOnDestroy(): void {
       this.fromArraySubscription.unsubscribe();
