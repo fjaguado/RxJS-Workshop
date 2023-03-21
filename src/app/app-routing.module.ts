@@ -32,7 +32,18 @@ const routes: Routes = [
   ...[ROUTES.OF, ROUTES.FROM, ROUTES.FROMEVENT].map(() => ({
     path: '',
     loadChildren: () =>
-      import('./components/operators/creation/creation.module').then(
+      import('./components/operators/1.creation/creation.module').then(
+        (m) => m.CreationModule
+      ),
+  })),
+  {
+    path: '**',
+    redirectTo: '',
+  },
+  ...[ROUTES.COMBINE_LATEST].map(() => ({
+    path: '',
+    loadChildren: () =>
+      import('./components/operators/1.creation/creation.module').then(
         (m) => m.CreationModule
       ),
   })),
