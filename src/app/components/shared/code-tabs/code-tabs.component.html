@@ -6,15 +6,15 @@
           class="accordion-button collapsed p-1"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#flush-collapseOne"
+          [attr.data-bs-target]="'#'+tabID"
+          [attr.aria-controls]="'#'+tabID"
           aria-expanded="false"
-          aria-controls="flush-collapseOne"
         >
           Example's code
         </button>
       </h2>
       <div
-        id="flush-collapseOne"
+        [id]="tabID"
         class="accordion-collapse collapse"
         aria-labelledby="flush-headingOne"
         data-bs-parent="#accordionFlushExample"

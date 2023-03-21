@@ -11,7 +11,7 @@ export class OfComponent {
   public ofSubscription = new Subscription();
   public inputtedValue = '';
   public sentValue = '';
-  
+
   public tsCode = getOfComponentTsCode();
   public htmlCode = getOfComponentHTMLCode();
 
@@ -35,14 +35,12 @@ export class OfComponent {
 const getOfComponentTsCode = (): string => `
   import { Component } from '@angular/core';
   import { of, Subscription } from 'rxjs';
-  import { OF_CREATION_SECTION } from '../creation.data';
 
   @Component({
     selector: 'app-of',
     templateUrl: './of.component.html',
   })
   export class OfComponent {
-    public OF_CREATION_SECTION = OF_CREATION_SECTION;
     public ofSubscription = new Subscription();
     public inputtedValue = '';
     public sentValue = '';
@@ -63,7 +61,7 @@ const getOfComponentTsCode = (): string => `
       this.inputtedValue = '';
     }
   }
-`
+`;
 
 const getOfComponentHTMLCode = (): string => `
   <div class="d-flex pt-3 column gap-3">
@@ -108,4 +106,4 @@ const getOfComponentHTMLCode = (): string => `
     Restart operator
   </button>
   </div>
-`
+`;

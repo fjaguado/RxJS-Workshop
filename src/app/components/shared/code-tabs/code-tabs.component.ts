@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class CodeTabsComponent {
   @Input() public tsCode = '';
   @Input() public htmlCode = '';
+  @Input() public tabID = 'collapseOne';
 }

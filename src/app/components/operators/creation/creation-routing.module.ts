@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ROUTES } from '../../../models/menu.model';
+import { FromComponent } from './from/from.component';
 import { OfComponent } from './of/of.component';
 
 const routes: Routes = [
@@ -10,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: ROUTES.FROM,
-    component: OfComponent,
+    component: FromComponent,
   },
   {
     path: ROUTES.FROMEVENT,
