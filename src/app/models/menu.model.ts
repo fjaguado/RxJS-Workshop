@@ -20,7 +20,7 @@ export enum ROUTES {
   OF = 'of',
   FROM = 'from',
   FROMEVENT = 'fromevent',
-  COMBINE_LATEST = 'combine-latest',
+  COMBINE_LATEST_WITH = 'combine-latest-with',
   WITH_LATEST_FROM = 'with-latestFrom',
   CONCAT = 'concat',
   MERGE = 'merge',

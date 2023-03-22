@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { CombinationRoutingModule } from './combination-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { FormsModule } from '@angular/forms';
-import { CombineLatestComponent } from './combine-latest/combine-latest.component';
+import { CombineLatestWithComponent } from './combine-latest-with/combine-latest-with.component';
 
-const COMPONENTS = [CombineLatestComponent];
+const COMPONENTS = [CombineLatestWithComponent];
 const MODULES = [
   CommonModule,
   CombinationRoutingModule,

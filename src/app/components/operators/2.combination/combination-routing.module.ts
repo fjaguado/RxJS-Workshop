@@ -1,36 +1,36 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ROUTES } from '../../../models/menu.model';
-import { CombineLatestComponent } from './combine-latest/combine-latest.component';
+import { CombineLatestWithComponent } from './combine-latest-with/combine-latest-with.component';
 
 const routes: Routes = [
   {
-    path: ROUTES.COMBINE_LATEST,
-    component: CombineLatestComponent,
+    path: ROUTES.COMBINE_LATEST_WITH,
+    component: CombineLatestWithComponent,
   },
   {
     path: ROUTES.WITH_LATEST_FROM,
-    component: CombineLatestComponent,
+    component: CombineLatestWithComponent,
   },
   {
     path: ROUTES.CONCAT,
-    component: CombineLatestComponent,
+    component: CombineLatestWithComponent,
   },
   {
     path: ROUTES.MERGE,
-    component: CombineLatestComponent,
+    component: CombineLatestWithComponent,
   },
   {
     path: ROUTES.START_WITH,
-    component: CombineLatestComponent,
+    component: CombineLatestWithComponent,
   },
   {
     path: ROUTES.FORK_JOIN,
-    component: CombineLatestComponent,
+    component: CombineLatestWithComponent,
   },
   {
     path: ROUTES.ZIP,
-    component: CombineLatestComponent,
+    component: CombineLatestWithComponent,
   },
 ];
 

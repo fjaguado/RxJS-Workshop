@@ -106,8 +106,8 @@ export class SideNavbarComponent {
       isSelectable: false,
       childLinks: [
         {
-          title: 'combineLatest',
-          url: ROUTES.COMBINE_LATEST,
+          title: 'combineLatestWith',
+          url: ROUTES.COMBINE_LATEST_WITH,
           isSelectable: true,
         },
         {

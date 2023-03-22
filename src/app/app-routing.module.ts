@@ -37,7 +37,7 @@ const routes: Routes = [
       ),
   })),
   ...[
-    ROUTES.COMBINE_LATEST,
+    ROUTES.COMBINE_LATEST_WITH,
     ROUTES.WITH_LATEST_FROM,
     ROUTES.CONCAT,
     ROUTES.MERGE,
