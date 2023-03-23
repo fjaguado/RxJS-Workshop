@@ -1,0 +1,91 @@
+<div class="d-flex row">
+  <app-info-section [selectedData]="CONCAT_SECTION[0]"></app-info-section>
+  <div class="d-flex column align-items-center">
+    <app-imported-content
+      class="col-6"
+      [imgSrc]="'https://rxjs.dev/assets/images/marble-diagrams/concat.png'"
+    ></app-imported-content>
+    <app-imported-content
+      class="col-6"
+      [videoSrc]="
+        'https://images.indepth.dev/references/rxjs/operators/concat.mp4'
+      "
+    ></app-imported-content>
+  </div>
+  <app-info-section [selectedData]="CONCAT_SECTION[1]"></app-info-section>
+  <div class="mb-4">
+    <app-info-section [selectedData]="CONCAT_SECTION[2]"></app-info-section>
+    <div class="d-flex pt-3 column gap-3">
+      <div class="col-6 d-flex row gap-1">
+        <div>
+          <div class="form-text">First Observer</div>
+          <div class="input-group align-items-center">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Send any value!"
+              [(ngModel)]="firstInputValue"
+            />
+          </div>
+        </div>
+        <div>
+          <div class="form-text">Second Observer</div>
+          <div class="input-group align-items-center">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Send any value!"
+              [(ngModel)]="secondInputValue"
+            />
+          </div>
+        </div>
+        <div>
+          <div class="form-text">Third Observer</div>
+          <div class="input-group align-items-center">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Send any value!"
+              [(ngModel)]="thirdInputValue"
+            />
+          </div>
+        </div>
+        <div class="d-flex justify-content-center p-3">
+          <button
+            class="btn btn-outline-secondary mx-3"
+            type="button"
+            (click)="concatValues()"
+          >
+            Concat!
+          </button>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-text">concat() strings Subscription</div>
+        <div class="input-group mb-3">
+          <textarea
+            type="text"
+            class="form-control"
+            disabled
+            value="{{ combinedValue }}"
+            style="height: 170px"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center py-4 gap-3">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="restartOperator()"
+      >
+        Restart operator
+      </button>
+    </div>
+    <app-code-tabs
+      [tsCode]="tsStringCode"
+      [htmlCode]="htmlStringCode"
+      [tabID]="'combineLatestWithStrings'"
+    ></app-code-tabs>
+  </div>
+</div>

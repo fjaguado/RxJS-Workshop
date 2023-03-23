@@ -98,3 +98,33 @@ export const WITH_LATEST_FROM_SECTION: SECTION[] = [
     `,
   },
 ];
+
+export const CONCAT_SECTION: SECTION[] = [
+  {
+    title: '',
+    body: `
+    <p>
+      <b>concat</b> combines a number of observables streams and sequentially emits all values from every given input stream. It only has one active subscription at a time from which the values are passed down to an observer. Once the current active stream completes it subscribes to next observable in a sequence. As values from any combined sequence are produced, those values are emitted as part of the resulting sequence.
+    </p>
+    <p>
+      Please note that concat will never complete if some of the input streams don’t complete. This also means that some streams will never be subscribed to.
+    </p>
+    `,
+  },
+  {
+    title: 'Usage',
+    body: `
+    <p>
+      Use this operator if <b>the order of emissions is important</b> and you want to first see values emitted by streams that you pass first to the operator. For example, you may have an observable sequences that delivers values from a cache and another sequence that delivers values from a remote server. Use concat if you want to combine them and ensure that the value from cache is delivered first.
+    </p>
+    `,
+  },
+  {
+    title: 'Example with strings',
+    body: `
+    <p>
+      In this case, when we click on the "Concat!" button, we'll be able to send all three inputted strings and we'll receive them in an ordered sequence. The first value that we'll receive is from the first observer, then from the second observer and lastly from the third observer. 
+    </p>
+    `,
+  },
+];
