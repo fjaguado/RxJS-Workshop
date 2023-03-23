@@ -196,3 +196,33 @@ export const START_WITH_SECTION: SECTION[] = [
     `,
   },
 ];
+
+export const FORK_JOIN_SECTION: SECTION[] = [
+  {
+    title: '',
+    body: `
+    <p>
+      <b>forkJoin</b> takes a number of input observables and waits for all passed observables to complete. Once they are complete, it will then emit a group of the last values from corresponding observables. The resulting stream emits only one time when all of the inner streams complete. It will never complete if any of the inner streams doesn’t complete and will throw an error if any of the inner streams errors out.
+    </p>
+    `,
+  },
+  {
+    title: 'Usage',
+    body: `
+    <p>
+      This operator is best used when you have a group of observables and only care about the final emitted value of each. One common use case for this is if you wish to issue multiple requests on page load (or some other event) and only want to take action when a response has been received for all.
+    </p>
+    <p>
+      Be aware that if any of the inner observables supplied to forkJoin error you will lose the value of any other observables that would or have already completed if you do not catch the error correctly on the inner observable. If you are only concerned with all inner observables completing successfully you can catch the error on the outside.
+    </p>
+    <p>
+      It's also worth noting that if you have an observable that emits more than one item, and you are concerned with the previous emissions forkJoin is not the correct choice. In these cases you may be better off with an operator like combineLatest or zip.
+    </p>
+    `,
+  },
+  {
+    title: '',
+    body: `
+    `,
+  },
+];

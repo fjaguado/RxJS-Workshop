@@ -8,6 +8,7 @@ import { WithLatestFromComponent } from './with-latest-from/with-latest-from.com
 import { ConcatComponent } from './concat/concat.component';
 import { MergeComponent } from './merge/merge.component';
 import { StartWithComponent } from './start-with/start-with.component';
+import { ForkJoinComponent } from './fork-join/fork-join.component';
 
 const COMPONENTS = [
   CombineLatestWithComponent,
@@ -15,6 +16,7 @@ const COMPONENTS = [
   ConcatComponent,
   MergeComponent,
   StartWithComponent,
+  ForkJoinComponent
 ];
 const MODULES = [
   CommonModule,
