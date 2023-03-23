@@ -7,6 +7,7 @@ import { ForkJoinComponent } from './fork-join/fork-join.component';
 import { MergeComponent } from './merge/merge.component';
 import { StartWithComponent } from './start-with/start-with.component';
 import { WithLatestFromComponent } from './with-latest-from/with-latest-from.component';
+import { ZipComponent } from './zip/zip.component';
 
 const routes: Routes = [
   {
@@ -35,7 +36,7 @@ const routes: Routes = [
   },
   {
     path: ROUTES.ZIP,
-    component: CombineLatestWithComponent,
+    component: ZipComponent,
   },
 ];
 

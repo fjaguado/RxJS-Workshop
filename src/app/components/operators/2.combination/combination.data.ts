@@ -221,8 +221,46 @@ export const FORK_JOIN_SECTION: SECTION[] = [
     `,
   },
   {
+    title: 'Example',
+    body: `
+    `,
+  },
+];
+
+export const ZIP_SECTION: SECTION[] = [
+  {
     title: '',
     body: `
+    <p>
+      <b>zip</b> operator combines observable streams in a way that resembles the mechanics of a zipper on clothing or a bag. It brings together two or more sequences of corresponding values as a tuple (a pair in case of two input streams). <b>It waits for the corresponding value to be emitted from all input streams, then transforms them into a single value using a projection function and emits the result.</b> 
+    </p>
+    <p>
+      It will only emit the value once it has a pair of fresh values from each source sequence. So if one of the source observables emits values faster than the other sequence, the rate of publishing will be dictated by the slower of the two sequences.
+    </p>
+    <p>
+      The resulting stream completes when any of the inner streams complete and the corresponding matched pairs are emitted from other streams. It will never complete if any of the inner streams doesn’t complete and will throw an error if any of the inner streams errors out.
+    </p>
+    `,
+  },
+  {
+    title: 'Difference with forkJoin',
+    body: `
+    <p>
+      <ul>
+        <li>
+          <b>zip</b> will wait until every subscribed observable emit a value and that's not good for scenarios where an observable could emit more than one value because we'll have unexpected behaviours (watch the above video).
+        </li>
+        <li>
+          <b>forkJoin</b> will wait until every subscribed observable <b>completes</b> and that's why it returns the last emitted value (of many).
+        </li>
+      </ul>
+    </p>
+    `,
+  },
+  {
+    title: 'Example',
+    body: `
+      In this case we'll be able to make two API requests that will emit data and this operator will collect. After 3 seconds, the string observable will emit a value and in that moment the operator will emit an array of values to the subscriptor.
     `,
   },
 ];
