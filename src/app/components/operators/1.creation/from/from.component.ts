@@ -62,7 +62,6 @@ export class FromComponent implements OnDestroy {
 const getTsFromArrayCode = (): string => `
   import { Component } from '@angular/core';
   import { from, Subscription } from 'rxjs';
-  import { FROM_CREATION_SECTION } from '../creation.data';
 
   @Component({
     selector: 'app-from',
@@ -143,13 +142,13 @@ const getHTMLFromArrayCode = (): string => `
 const getTsFromPromiseCode = (): string => `
   import { Component } from '@angular/core';
   import { from, Subscription } from 'rxjs';
-  import { FROM_CREATION_SECTION } from '../creation.data';
 
   @Component({
     selector: 'app-from',
     templateUrl: './from.component.html',
   })
   export class FromComponent implements OnDestroy {
+  
     public fromPromiseSubscription = new Subscription();
     public promiseValue = 'https://api.publicapis.org/entries';
     public sentPromiseValue = '';

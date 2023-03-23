@@ -2,16 +2,20 @@
   <app-info-section
     [selectedData]="COMBINE_LATEST_WITH_SECTION[0]"
   ></app-info-section>
-  <app-imported-content
-    [imgSrc]="
-      'https://rxjs-dev.firebaseapp.com/assets/images/marble-diagrams/combineLatest.png'
-    "
-  ></app-imported-content>
-  <app-imported-content
-    [videoSrc]="
-      'https://images.indepth.dev/references/rxjs/operators/combine-latest.mp4'
-    "
-  ></app-imported-content>
+  <div class="d-flex column align-items-center">
+    <app-imported-content
+      class="col-6"
+      [imgSrc]="
+        'https://rxjs-dev.firebaseapp.com/assets/images/marble-diagrams/combineLatest.png'
+      "
+    ></app-imported-content>
+    <app-imported-content
+      class="col-6"
+      [videoSrc]="
+        'https://images.indepth.dev/references/rxjs/operators/combine-latest.mp4'
+      "
+    ></app-imported-content>
+  </div>
   <app-info-section
     [selectedData]="COMBINE_LATEST_WITH_SECTION[1]"
   ></app-info-section>
@@ -22,34 +26,41 @@
     <div class="d-flex pt-3 column gap-3">
       <div class="col-6 d-flex row gap-1">
         <div>
-          <div class="form-text">First Observer</div>
+          <div class="form-text">Source Observer</div>
           <div class="input-group align-items-center">
             <input
               type="text"
               class="form-control"
               placeholder="Send any value!"
-              [(ngModel)]="firstInputValue"
+              [(ngModel)]="sourceInputValue"
             />
           </div>
         </div>
         <div>
-          <div class="form-text">Second Observer</div>
+          <div class="form-text">Combined Observer</div>
           <div class="input-group align-items-center">
             <input
               type="text"
               class="form-control"
               placeholder="Send any value!"
-              [(ngModel)]="secondInputValue"
+              [(ngModel)]="combinedInputValue"
             />
           </div>
         </div>
         <div class="d-flex justify-content-center p-3">
           <button
+            class="btn btn-outline-secondary mx-3"
+            type="button"
+            (click)="doSendSourceObservable()"
+          >
+            Emit source data!
+          </button>
+          <button
             class="btn btn-outline-secondary"
             type="button"
-            (click)="doCombineStreams()"
+            (click)="doSendCombinedObservable()"
           >
-            Combine streams!
+            Emit other data!
           </button>
         </div>
       </div>

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { combineLatestWith, Observable, of, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { combineLatestWith, Observable, of, Subject, Subscription } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { CoinbaseAPI, CoinGekoAPI } from '../../../../models/api.model';
 import { COMBINE_LATEST_WITH_SECTION } from '../combination.data';
@@ -8,37 +8,49 @@ import { COMBINE_LATEST_WITH_SECTION } from '../combination.data';
   selector: 'app-combine-latest',
   templateUrl: './combine-latest-with.component.html',
 })
-export class CombineLatestWithComponent {
+export class CombineLatestWithComponent implements OnInit {
   public COMBINE_LATEST_WITH_SECTION = COMBINE_LATEST_WITH_SECTION;
 
   public combinatedSubscription = new Subscription();
-  public firstInputValue = '10';
-  public secondInputValue = '20';
+  public sourceInputValue = '10';
+  public combinedInputValue = '20';
   public combinatedValue = '';
 
   public tsStringCode = getStringTsCode();
   public htmlStringCode = getStringHTMLCode();
 
-  public doCombineStreams(): void {
+  private sourceObserver = new Subject<string>();
+  private combinedObserver = new Subject<string>();
+
+  public ngOnInit(): void {
+    this.subscribeToStream();
+  }
+
+  public subscribeToStream(): void {
     if (!this.combinatedSubscription.closed) {
       this.combinatedSubscription.unsubscribe();
     }
 
-    const observer1 = of(this.firstInputValue);
-    const observer2 = of(this.secondInputValue);
-
-    this.combinatedSubscription = observer1
-      .pipe(combineLatestWith(observer2))
+    this.combinatedSubscription = this.sourceObserver
+      .pipe(combineLatestWith(this.combinedObserver))
       .subscribe((val) => {
         console.log(val);
         this.combinatedValue += `Combined value: [${val}] \n`;
       });
   }
 
+  public doSendSourceObservable(): void {
+    this.sourceObserver.next(this.sourceInputValue);
+  }
+
+  public doSendCombinedObservable(): void {
+    this.combinedObserver.next(this.combinedInputValue);
+  }
+
   public restartOperator(): void {
-    this.combinatedSubscription.unsubscribe();
-    this.firstInputValue = '10';
-    this.secondInputValue = '20';
+    this.subscribeToStream();
+    this.sourceInputValue = '10';
+    this.combinedInputValue = '20';
     this.combinatedValue = '';
   }
 
@@ -86,14 +98,12 @@ export class CombineLatestWithComponent {
 const getStringTsCode = (): string => `
   import { Component } from '@angular/core';
   import { combineLatestWith, of, Subscription } from 'rxjs';
-  import { COMBINE_LATEST_WITH_SECTION } from '../combination.data';
 
   @Component({
     selector: 'app-combine-latest',
     templateUrl: './combine-latest-with.component.html',
   })
   export class CombineLatestWithComponent {
-    public COMBINE_LATEST_WITH_SECTION = COMBINE_LATEST_WITH_SECTION;
 
     public combinatedSubscription = new Subscription();
     public firstInputValue = '10';
@@ -189,15 +199,13 @@ const getCryptoTsCode = (): string => `
   import { combineLatestWith, Observable, Subscription } from 'rxjs';
   import { ajax } from 'rxjs/ajax';
   import { CoinbaseAPI, CoinGekoAPI } from '../../../../models/api.model';
-  import { COMBINE_LATEST_WITH_SECTION } from '../combination.data';
 
   @Component({
     selector: 'app-combine-latest',
     templateUrl: './combine-latest-with.component.html',
   })
   export class CombineLatestWithComponent {
-    public COMBINE_LATEST_WITH_SECTION = COMBINE_LATEST_WITH_SECTION;
-
+  
     public combinatedCryptoSubscription = new Subscription();
     public firstInputURL = 'https://api.coinbase.com/v2/exchange-rates?currency=BTC';
     public secondInputURL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd';

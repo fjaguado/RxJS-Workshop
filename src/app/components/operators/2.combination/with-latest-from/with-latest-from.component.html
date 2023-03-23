@@ -1,0 +1,95 @@
+<div class="d-flex row">
+  <app-info-section
+    [selectedData]="WITH_LATEST_FROM_SECTION[0]"
+  ></app-info-section>
+  <div class="d-flex column align-items-center">
+    <app-imported-content
+      class="col-6"
+      [imgSrc]="
+        'https://rxjs.dev/assets/images/marble-diagrams/withLatestFrom.png'
+      "
+    ></app-imported-content>
+    <app-imported-content
+      class="col-6"
+      [videoSrc]="
+        'https://images.indepth.dev/references/rxjs/operators/with-latest-from.mp4'
+      "
+    ></app-imported-content>
+  </div>
+  <app-info-section
+    [selectedData]="WITH_LATEST_FROM_SECTION[1]"
+  ></app-info-section>
+  <div class="mb-4">
+    <app-info-section
+      [selectedData]="WITH_LATEST_FROM_SECTION[2]"
+    ></app-info-section>
+    <div class="d-flex pt-3 column gap-3">
+      <div class="col-6 d-flex row gap-1">
+        <div>
+          <div class="form-text">Source Observer</div>
+          <div class="input-group align-items-center">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Send any value!"
+              [(ngModel)]="sourceInputValue"
+            />
+          </div>
+        </div>
+        <div>
+          <div class="form-text">Latest Observer</div>
+          <div class="input-group align-items-center">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Send any value!"
+              [(ngModel)]="latestInputValue"
+            />
+          </div>
+        </div>
+        <div class="d-flex justify-content-center p-3">
+          <button
+            class="btn btn-outline-secondary mx-2"
+            type="button"
+            (click)="doSendSourceObserver()"
+          >
+            Send source observer!
+          </button>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="doSendLatestObserver()"
+          >
+            Send latest observer!
+          </button>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-text">withLatestFrom() strings Subscription</div>
+        <div class="input-group mb-3">
+          <textarea
+            type="text"
+            class="form-control"
+            disabled
+            value="{{ combinatedValue }}"
+            style="height: 170px"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center py-4 gap-3">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="restartOperator()"
+      >
+        Restart operator
+      </button>
+    </div>
+    <app-code-tabs
+      [tsCode]="tsStringCode"
+      [htmlCode]="htmlStringCode"
+      [tabID]="'withLatestFromStrings'"
+    ></app-code-tabs>
+  </div>
+</div>

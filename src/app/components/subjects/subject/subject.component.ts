@@ -104,14 +104,12 @@ export class SubjectComponent {
 const getSubjectTSCode = (): string => `
   import { Component } from '@angular/core';
   import { Observable, Subject, Subscription } from 'rxjs';
-  import { SUBJECT_SECTION } from '../subjects.data';
 
   @Component({
     selector: 'app-subject',
     templateUrl: 'subject.component.html',
   })
   export class SubjectComponent {
-    public SUBJECT_SECTION = SUBJECT_SECTION;
 
     public subject = new Subject<string>();
 
@@ -196,7 +194,6 @@ const getSubjectTSCode = (): string => `
     }
   }
   `;
-
 
 const getSubjectHTMLCode = (): string => `
   <div class="pb-4">
@@ -303,4 +300,3 @@ const getSubjectHTMLCode = (): string => `
     </p>
   </div>
   `;
-

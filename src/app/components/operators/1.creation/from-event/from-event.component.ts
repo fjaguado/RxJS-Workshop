@@ -112,14 +112,12 @@ export class FromEventComponent implements AfterViewInit, OnDestroy {
 const getTsFromEventClickCode = (): string => `
   import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
   import { fromEvent, Subscription } from 'rxjs';
-  import { FROM_EVENT_CREATION_SECTION } from '../creation.data';
 
   @Component({
     selector: 'app-from-event',
     templateUrl: './from-event.component.html',
   })
   export class FromEventComponent implements AfterViewInit, OnDestroy {
-    public FROM_EVENT_CREATION_SECTION = FROM_EVENT_CREATION_SECTION;
 
     public ngAfterViewInit(): void {
       this.subscribeToClickInput();
@@ -211,14 +209,12 @@ const getHTMLFromEventClickCode = (): string => `
 const getTsFromEventMouseoverCode = (): string => `
   import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
   import { fromEvent, Subscription } from 'rxjs';
-  import { FROM_EVENT_CREATION_SECTION } from '../creation.data';
 
   @Component({
     selector: 'app-from-event',
     templateUrl: './from-event.component.html',
   })
   export class FromEventComponent implements AfterViewInit, OnDestroy {
-    public FROM_EVENT_CREATION_SECTION = FROM_EVENT_CREATION_SECTION;
 
     public ngAfterViewInit(): void {
       this.subscribeToMouseoverInput();

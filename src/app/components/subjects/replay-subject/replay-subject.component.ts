@@ -142,7 +142,6 @@ export class ReplaySubjectComponent {
 const getReplaySubjectTSCode = (): string => `
   import { Component } from '@angular/core';
   import { Observable, ReplaySubject, Subscription } from 'rxjs';
-  import { REPLAY_SUBJECT_SECTION } from '../subjects.data';
 
   type OBSERVABLE_SELECTED = 'obs1' | 'obs2' | 'obs3';
 
@@ -151,7 +150,6 @@ const getReplaySubjectTSCode = (): string => `
     templateUrl: 'replay-subject.component.html',
   })
   export class ReplaySubjectComponent {
-    public REPLAY_SUBJECT_SECTION = REPLAY_SUBJECT_SECTION;
 
     public subjectExecuted = false;
 

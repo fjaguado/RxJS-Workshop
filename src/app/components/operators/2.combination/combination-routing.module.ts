@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ROUTES } from '../../../models/menu.model';
 import { CombineLatestWithComponent } from './combine-latest-with/combine-latest-with.component';
+import { WithLatestFromComponent } from './with-latest-from/with-latest-from.component';
 
 const routes: Routes = [
   {
@@ -10,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: ROUTES.WITH_LATEST_FROM,
-    component: CombineLatestWithComponent,
+    component: WithLatestFromComponent,
   },
   {
     path: ROUTES.CONCAT,

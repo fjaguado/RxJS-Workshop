@@ -125,7 +125,6 @@ export class AsyncSubjectComponent {
 const getAsyncSubjectTSCode = (): string => `
   import { Component } from '@angular/core';
   import { AsyncSubject, Observable, Subscription } from 'rxjs';
-  import { ASYNC_SUBJECT_SECTION } from '../subjects.data';
 
   type OBSERVABLE_SELECTED = 'obs1' | 'obs2' | 'obs3';
 
@@ -134,7 +133,6 @@ const getAsyncSubjectTSCode = (): string => `
     templateUrl: './async-subject.component.html',
   })
   export class AsyncSubjectComponent {
-    public ASYNC_SUBJECT_SECTION = ASYNC_SUBJECT_SECTION;
 
     public subjectCompleted = false;
 

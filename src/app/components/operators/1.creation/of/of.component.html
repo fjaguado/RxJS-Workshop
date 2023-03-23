@@ -1,11 +1,15 @@
 <div class="d-flex row">
   <app-info-section [selectedData]="OF_CREATION_SECTION[0]"></app-info-section>
-  <app-imported-content
-    [imgSrc]="'https://rxjs.dev/assets/images/marble-diagrams/of.png'"
-  ></app-imported-content>
-  <app-imported-content
-    [videoSrc]="'https://images.indepth.dev/references/rxjs/operators/of.mp4'"
-  ></app-imported-content>
+  <div class="d-flex column align-items-center">
+    <app-imported-content
+      class="col-6"
+      [imgSrc]="'https://rxjs.dev/assets/images/marble-diagrams/of.png'"
+    ></app-imported-content>
+    <app-imported-content
+      class="col-6"
+      [videoSrc]="'https://images.indepth.dev/references/rxjs/operators/of.mp4'"
+    ></app-imported-content>
+  </div>
   <app-info-section [selectedData]="OF_CREATION_SECTION[1]"></app-info-section>
   <h4>Example</h4>
   <app-info-section [selectedData]="OF_CREATION_SECTION[2]"></app-info-section>

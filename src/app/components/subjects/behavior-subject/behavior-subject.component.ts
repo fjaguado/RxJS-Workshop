@@ -114,14 +114,12 @@ export class BehaviorSubjectComponent {
 const getBehaviorSubjectTSCode = (): string => `
   import { Component } from '@angular/core';
   import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-  import { BEHAVIOR_SUBJECT_SECTION } from '../subjects.data';
 
   @Component({
     selector: 'app-behavior-subject',
     templateUrl: './behavior-subject.component.html',
   })
   export class BehaviorSubjectComponent {
-    public BEHAVIOR_SUBJECT_SECTION = BEHAVIOR_SUBJECT_SECTION;
 
     public showBehaviorSubjectValue = false;
 
