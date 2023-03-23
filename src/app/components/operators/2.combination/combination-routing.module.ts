@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ROUTES } from '../../../models/menu.model';
 import { CombineLatestWithComponent } from './combine-latest-with/combine-latest-with.component';
 import { ConcatComponent } from './concat/concat.component';
+import { MergeComponent } from './merge/merge.component';
 import { WithLatestFromComponent } from './with-latest-from/with-latest-from.component';
 
 const routes: Routes = [
@@ -20,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: ROUTES.MERGE,
-    component: CombineLatestWithComponent,
+    component: MergeComponent,
   },
   {
     path: ROUTES.START_WITH,

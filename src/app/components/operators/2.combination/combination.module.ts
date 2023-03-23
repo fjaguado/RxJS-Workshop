@@ -6,11 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { CombineLatestWithComponent } from './combine-latest-with/combine-latest-with.component';
 import { WithLatestFromComponent } from './with-latest-from/with-latest-from.component';
 import { ConcatComponent } from './concat/concat.component';
+import { MergeComponent } from './merge/merge.component';
 
 const COMPONENTS = [
   CombineLatestWithComponent,
   WithLatestFromComponent,
   ConcatComponent,
+  MergeComponent,
 ];
 const MODULES = [
   CommonModule,

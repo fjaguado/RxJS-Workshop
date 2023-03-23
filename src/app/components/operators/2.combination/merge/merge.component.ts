@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { concat, map, Subscription, timer } from 'rxjs';
-import { CONCAT_SECTION } from '../combination.data';
+import { map, merge, Subscription, timer } from 'rxjs';
+import { MERGE_SECTION } from '../combination.data';
 
 @Component({
-  selector: 'app-concat',
-  templateUrl: './concat.component.html',
+  selector: 'app-merge',
+  templateUrl: './merge.component.html',
 })
-export class ConcatComponent {
-  public CONCAT_SECTION = CONCAT_SECTION;
+export class MergeComponent {
+  public MERGE_SECTION = MERGE_SECTION;
 
   public subscription = new Subscription();
 
@@ -26,7 +26,7 @@ export class ConcatComponent {
     this.combinedValue = '';
   }
 
-  public concatValues(): void {
+  public mergeValues(): void {
     if (!this.subscription.closed) {
       this.subscription.unsubscribe();
     }
@@ -35,7 +35,7 @@ export class ConcatComponent {
     const secondObserver = timer(6000).pipe(map(() => this.secondInputValue));
     const thirdObserver = timer(4000).pipe(map(() => this.thirdInputValue));
 
-    this.subscription = concat(
+    this.subscription = merge(
       firstObserver,
       secondObserver,
       thirdObserver
@@ -48,13 +48,13 @@ export class ConcatComponent {
 
 const getStringTsCode = (): string => `
   import { Component } from '@angular/core';
-  import { concat, map, Subscription, timer } from 'rxjs';
+  import { map, merge, Subscription, timer } from 'rxjs';
 
   @Component({
-    selector: 'app-concat',
-    templateUrl: './concat.component.html',
+    selector: 'app-merge',
+    templateUrl: './merge.component.html',
   })
-  export class ConcatComponent {
+  export class MergeComponent {
 
     public subscription = new Subscription();
 
@@ -70,7 +70,7 @@ const getStringTsCode = (): string => `
       this.combinedValue = '';
     }
 
-    public concatValues(): void {
+    public mergeValues(): void {
       if (!this.subscription.closed) {
         this.subscription.unsubscribe();
       }
@@ -79,11 +79,11 @@ const getStringTsCode = (): string => `
       const secondObserver = timer(6000).pipe(map(() => this.secondInputValue));
       const thirdObserver = timer(4000).pipe(map(() => this.thirdInputValue));
 
-      this.subscription = concat(
+      this.subscription = merge(
         firstObserver,
         secondObserver,
         thirdObserver
-      ).subscribe(val => this.combinedValue += 'Received value: '+ val');
+      ).subscribe(val => this.combinedValue += 'Received value: + val');
     }
   }
 `;
@@ -128,14 +128,14 @@ const getStringHTMLCode = (): string => `
         <button
           class="btn btn-outline-secondary mx-3"
           type="button"
-          (click)="concatValues()"
+          (click)="mergeValues()"
         >
-          Concat!
+          Merge!
         </button>
       </div>
     </div>
     <div class="col-6">
-      <div class="form-text">concat() strings Subscription</div>
+      <div class="form-text">merge() strings Subscription</div>
       <div class="input-group mb-3">
         <textarea
           type="text"

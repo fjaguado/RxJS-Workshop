@@ -1,20 +1,20 @@
 <div class="d-flex row">
-  <app-info-section [selectedData]="CONCAT_SECTION[0]"></app-info-section>
+  <app-info-section [selectedData]="MERGE_SECTION[0]"></app-info-section>
   <div class="d-flex column align-items-center">
     <app-imported-content
       class="col-6"
-      [imgSrc]="'https://rxjs.dev/assets/images/marble-diagrams/concat.png'"
+      [imgSrc]="'https://rxjs.dev/assets/images/marble-diagrams/merge.png'"
     ></app-imported-content>
     <app-imported-content
       class="col-6"
       [videoSrc]="
-        'https://images.indepth.dev/references/rxjs/operators/concat.mp4'
+        'https://images.indepth.dev/references/rxjs/operators/merge.mp4'
       "
     ></app-imported-content>
   </div>
-  <app-info-section [selectedData]="CONCAT_SECTION[1]"></app-info-section>
+  <app-info-section [selectedData]="MERGE_SECTION[1]"></app-info-section>
   <div class="mb-4">
-    <app-info-section [selectedData]="CONCAT_SECTION[2]"></app-info-section>
+    <app-info-section [selectedData]="MERGE_SECTION[2]"></app-info-section>
     <div class="d-flex pt-3 column gap-3">
       <div class="col-6 d-flex row gap-1">
         <div>
@@ -54,14 +54,14 @@
           <button
             class="btn btn-outline-secondary mx-3"
             type="button"
-            (click)="concatValues()"
+            (click)="mergeValues()"
           >
-            Concat!
+            Merge!
           </button>
         </div>
       </div>
       <div class="col-6">
-        <div class="form-text">concat() strings Subscription</div>
+        <div class="form-text">merge() strings Subscription</div>
         <div class="input-group mb-3">
           <textarea
             type="text"
@@ -85,7 +85,7 @@
     <app-code-tabs
       [tsCode]="tsStringCode"
       [htmlCode]="htmlStringCode"
-      [tabID]="'concat'"
+      [tabID]="'merge'"
     ></app-code-tabs>
   </div>
 </div>

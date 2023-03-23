@@ -123,7 +123,56 @@ export const CONCAT_SECTION: SECTION[] = [
     title: 'Example with strings',
     body: `
     <p>
-      In this case, when we click on the "Concat!" button, we'll be able to send all three inputted strings and we'll receive them in an ordered sequence. The first value that we'll receive is from the first observer, then from the second observer and lastly from the third observer. 
+      In this case, when we click on the "Concat!" button, all three observer will try to emit their values, but they will have to wait a specified time until they are able to emit a value. As we're using the concat operator, all values are going to be sent in an <b>ordered</b> sequence.
+      <ol>
+        <li>
+          After two seconds, we'll receive the first observer's value.
+        </li>
+        <li>
+          Then, we'll have to wait 6 seconds for the second observer to emit.
+        </li>
+        <li>
+          Lastly, after we've received the second observer, we'll have to wait another 4 seconds for the third observer to emit.
+        </li>
+      </ol>
+    </p>
+    `,
+  },
+];
+
+export const MERGE_SECTION: SECTION[] = [
+  {
+    title: '',
+    body: `
+    <p>
+      <b>merge</b> combines a number of observables streams and concurrently emits all values from every given input stream. As values from any combined sequence are produced, those values are emitted as part of the resulting sequence. Such process is often referred to as flattening in documentation.
+    </p>
+    `,
+  },
+  {
+    title: 'Usage',
+    body: `
+      <p>
+        Use this operator if you’re not concerned with the order of emissions and is simply interested in all values coming out from multiple combined streams as if they were produced by one stream.
+      </p>
+    `,
+  },
+  {
+    title: 'Example with strings',
+    body: `
+    <p>
+      In this case, when we click on the "Merge!" button, all three observer will try to emit their values, but they will have to wait a specified time until they are able to emit a value. As we're using the merge operator, all values are going to be sent in an <b>unordered</b> sequence.
+      <ol>
+        <li>
+          After two seconds, we'll receive the first observer's value.
+        </li>
+        <li>
+          Then, we'll receive the third observer's value because we've waited 4 seconds for this observer to emit.
+        </li>
+        <li>
+          Lastly, we'll receive the second observer's value because we've waited 6 seconds for this observer to emit.
+        </li>
+      </ol>
     </p>
     `,
   },
