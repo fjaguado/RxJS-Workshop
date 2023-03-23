@@ -4,12 +4,6 @@ import { ajax } from 'rxjs/ajax';
 import { CoinbaseAPI, CoinGekoAPI } from '../../../../models/api.model';
 import { FORK_JOIN_SECTION } from '../combination.data';
 
-enum OBSERVER_TYPE {
-  FIRST = 'first',
-  SECOND = 'second',
-  THIRD = 'third',
-}
-
 type ForkJoinType = CoinbaseAPI | CoinGekoAPI[] | string;
 
 @Component({
@@ -18,7 +12,6 @@ type ForkJoinType = CoinbaseAPI | CoinGekoAPI[] | string;
 })
 export class ForkJoinComponent {
   public FORK_JOIN_SECTION = FORK_JOIN_SECTION;
-  public OBSERVER_TYPE = OBSERVER_TYPE;
 
   public subscription = new Subscription();
 
@@ -85,12 +78,6 @@ const getStringTsCode = (): string => `
   import { ajax } from 'rxjs/ajax';
   import { CoinbaseAPI, CoinGekoAPI } from '../../../../models/api.model';
 
-  enum OBSERVER_TYPE {
-    FIRST = 'first',
-    SECOND = 'second',
-    THIRD = 'third',
-  }
-
   type ForkJoinType = CoinbaseAPI | CoinGekoAPI[] | string;
 
   @Component({
@@ -98,7 +85,6 @@ const getStringTsCode = (): string => `
     templateUrl: './fork-join.component.html',
   })
   export class ForkJoinComponent {
-    public OBSERVER_TYPE = OBSERVER_TYPE;
 
     public subscription = new Subscription();
 
