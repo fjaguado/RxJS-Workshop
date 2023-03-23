@@ -63,7 +63,7 @@ export const WITH_LATEST_FROM_SECTION: SECTION[] = [
     title: '',
     body: `
     <p>
-      withLatestFrom combines the source observable with other streams and emits values calculated from the latest values of each, <b>only when the source emits.</p>
+      withLatestFrom combines the source observable with other streams and emits values calculated from the latest values of each, <b>only when the source emits.</b>
     </p>
     <p>
       Just as with combineLatest it still waits for at least one emitted value from each stream and may complete without a single emission when the guiding stream completes. It will never complete if the guiding stream doesn’t complete and will throw an error if any of the inner streams errors out.
@@ -74,7 +74,7 @@ export const WITH_LATEST_FROM_SECTION: SECTION[] = [
     title: 'Differences with combineLatest',
     body: `
     <p>
-      While the similar combineLatest operator emits a new value whenever there’s a new emission from any of the input streams, withLatestFrom emits a new value only if there’s a new emission from the guiding stream.
+      While the similar combineLatest operator emits a new value whenever there’s a new emission from any of the input streams, <b>withLatestFrom emits a new value only if there’s a new emission from the source stream.</b>
     </p>
     `,
   },

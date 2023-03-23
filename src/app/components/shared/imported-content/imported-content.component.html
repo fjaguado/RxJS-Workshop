@@ -1,5 +1,11 @@
 <div class="d-flex justify-content-center mb-4">
-  <video id="player" playsinline controls *ngIf="videoSrc; else imgTemplate">
+  <video
+    class="operator-img"
+    id="player"
+    playsinline
+    controls
+    *ngIf="videoSrc; else imgTemplate"
+  >
     <source [src]="videoSrc" type="video/mp4" />
   </video>
   <ng-template #imgTemplate>

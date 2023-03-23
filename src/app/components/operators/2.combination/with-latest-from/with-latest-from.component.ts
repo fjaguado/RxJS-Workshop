@@ -56,53 +56,53 @@ export class WithLatestFromComponent implements OnInit {
 }
 
 const getStringTsCode = (): string => `
-import { Component, OnInit } from '@angular/core';
-import { of, Subject, Subscription } from 'rxjs';
-import { withLatestFrom } from 'rxjs/operators';
+  import { Component, OnInit } from '@angular/core';
+  import { of, Subject, Subscription } from 'rxjs';
+  import { withLatestFrom } from 'rxjs/operators';
 
-@Component({
-  selector: 'app-with-latest-from',
-  templateUrl: './with-latest-from.component.html',
-})
-export class WithLatestFromComponent implements OnInit {
-  public subscription = new Subscription();
+  @Component({
+    selector: 'app-with-latest-from',
+    templateUrl: './with-latest-from.component.html',
+  })
+  export class WithLatestFromComponent implements OnInit {
+    public subscription = new Subscription();
 
-  public sourceInputValue = '10';
-  public latestInputValue = '20';
-  public combinatedValue = '';
+    public sourceInputValue = '10';
+    public latestInputValue = '20';
+    public combinatedValue = '';
 
-  private sourceObserver = new Subject<string>();
-  private latestObserver = new Subject<string>();
+    private sourceObserver = new Subject<string>();
+    private latestObserver = new Subject<string>();
 
-  public ngOnInit(): void {
-    this.subscribeToInput();
-  }
-
-  public doSendSourceObserver(): void {
-    this.sourceObserver.next(this.sourceInputValue);
-  }
-
-  public doSendLatestObserver(): void {
-    this.latestObserver.next(this.latestInputValue);
-  }
-
-  public restartOperator(): void {
-    this.subscribeToInput();
-    this.sourceInputValue = '10';
-    this.latestInputValue = '20';
-    this.combinatedValue = '';
-  }
-
-  private subscribeToInput(): void {
-    if (!this.subscription.closed) {
-      this.subscription.unsubscribe();
+    public ngOnInit(): void {
+      this.subscribeToInput();
     }
 
-    this.subscription = this.sourceObserver
-      .pipe(withLatestFrom(this.latestObserver))
-      .subscribe((val) => this.combinatedValue += 'Combined value: [' + val + ']');
+    public doSendSourceObserver(): void {
+      this.sourceObserver.next(this.sourceInputValue);
+    }
+
+    public doSendLatestObserver(): void {
+      this.latestObserver.next(this.latestInputValue);
+    }
+
+    public restartOperator(): void {
+      this.subscribeToInput();
+      this.sourceInputValue = '10';
+      this.latestInputValue = '20';
+      this.combinatedValue = '';
+    }
+
+    private subscribeToInput(): void {
+      if (!this.subscription.closed) {
+        this.subscription.unsubscribe();
+      }
+
+      this.subscription = this.sourceObserver
+        .pipe(withLatestFrom(this.latestObserver))
+        .subscribe((val) => this.combinatedValue += 'Combined value: [' + val + ']');
+    }
   }
-}
 `;
 
 const getStringHTMLCode = (): string => `
