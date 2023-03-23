@@ -177,3 +177,22 @@ export const MERGE_SECTION: SECTION[] = [
     `,
   },
 ];
+
+export const START_WITH_SECTION: SECTION[] = [
+  {
+    title: '',
+    body: `
+      <p>
+        Returns an observable that, at the moment of subscription, will synchronously emit all values provided to this operator, then subscribe to the source and mirror all of its emissions to subscribers. This is a useful way to know when subscription has occurred on an existing observable. First emits its arguments in order, and then any emissions from the source.
+      </p>
+    `,
+  },
+  {
+    title: 'Example with strings',
+    body: `
+      <p>
+        In this case we'll be able to send an observable with a pre-defined order data because we'll be able to send either the first or second observer in the stream line.
+      </p>
+    `,
+  },
+];

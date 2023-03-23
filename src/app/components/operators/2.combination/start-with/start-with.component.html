@@ -1,0 +1,80 @@
+<div class="d-flex row">
+  <app-info-section [selectedData]="START_WITH_SECTION[0]"></app-info-section>
+  <div class="d-flex column align-items-center">
+    <app-imported-content
+      class="col-12"
+      [imgSrc]="'https://rxjs.dev/assets/images/marble-diagrams/startWith.png'"
+    ></app-imported-content>
+  </div>
+  <div class="mb-4">
+    <app-info-section [selectedData]="START_WITH_SECTION[1]"></app-info-section>
+    <div class="d-flex pt-3 column gap-3">
+      <div class="col-6 d-flex row gap-1">
+        <div>
+          <div class="form-text">First Observer</div>
+          <div class="input-group align-items-center">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Send any value!"
+              [(ngModel)]="firstInputValue"
+            />
+          </div>
+        </div>
+        <div>
+          <div class="form-text">Second Observer</div>
+          <div class="input-group align-items-center">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Send any value!"
+              [(ngModel)]="secondInputValue"
+            />
+          </div>
+        </div>
+        <div class="d-flex justify-content-center p-3">
+          <button
+            class="btn btn-outline-secondary mx-3"
+            type="button"
+            (click)="doStartWith(true)"
+          >
+            StartWith the first observer!
+          </button>
+          <button
+            class="btn btn-outline-secondary mx-3"
+            type="button"
+            (click)="doStartWith()"
+          >
+            StartWith the second observer!
+          </button>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-text">startWith() strings Subscription</div>
+        <div class="input-group mb-3">
+          <textarea
+            type="text"
+            class="form-control"
+            disabled
+            value="{{ combinedValue }}"
+            style="height: 170px"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center py-4 gap-3">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="restartOperator()"
+      >
+        Restart operator
+      </button>
+    </div>
+    <app-code-tabs
+      [tsCode]="tsStringCode"
+      [htmlCode]="htmlStringCode"
+      [tabID]="'merge'"
+    ></app-code-tabs>
+  </div>
+</div>

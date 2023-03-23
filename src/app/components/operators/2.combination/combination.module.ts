@@ -7,12 +7,14 @@ import { CombineLatestWithComponent } from './combine-latest-with/combine-latest
 import { WithLatestFromComponent } from './with-latest-from/with-latest-from.component';
 import { ConcatComponent } from './concat/concat.component';
 import { MergeComponent } from './merge/merge.component';
+import { StartWithComponent } from './start-with/start-with.component';
 
 const COMPONENTS = [
   CombineLatestWithComponent,
   WithLatestFromComponent,
   ConcatComponent,
   MergeComponent,
+  StartWithComponent,
 ];
 const MODULES = [
   CommonModule,

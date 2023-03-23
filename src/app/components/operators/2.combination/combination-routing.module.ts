@@ -4,6 +4,7 @@ import { ROUTES } from '../../../models/menu.model';
 import { CombineLatestWithComponent } from './combine-latest-with/combine-latest-with.component';
 import { ConcatComponent } from './concat/concat.component';
 import { MergeComponent } from './merge/merge.component';
+import { StartWithComponent } from './start-with/start-with.component';
 import { WithLatestFromComponent } from './with-latest-from/with-latest-from.component';
 
 const routes: Routes = [
@@ -25,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: ROUTES.START_WITH,
-    component: CombineLatestWithComponent,
+    component: StartWithComponent,
   },
   {
     path: ROUTES.FORK_JOIN,
