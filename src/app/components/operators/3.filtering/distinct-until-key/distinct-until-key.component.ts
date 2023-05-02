@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { BehaviorSubject, debounceTime, distinctUntilChanged, distinctUntilKeyChanged, from, fromEvent, map, Observable, of, Subscription } from 'rxjs';
-import { OF_DEBOUNCE_TIME_SECTION, OF_DISTINCT_UNTIL_KEY_SECTION, OF_DISTINCT_UNTIL_SECTION } from '../filtering.data';
+import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject, distinctUntilKeyChanged, from } from 'rxjs';
+import { OF_DISTINCT_UNTIL_KEY_SECTION } from '../filtering.data';
 
 @Component({
 	selector:    'app-from',
@@ -66,23 +66,72 @@ export class DistinctUntilKeyComponent implements OnInit {
 }
 
 const getTsFromArrayCode = (): string => `
-  // RxJS v6+
-    import { of, distinctUntilKeyChanged } from 'rxjs';
-    
-    of(
-      { age: 4, name: 'Foo' },
-      { age: 7, name: 'Bar' },
-      { age: 5, name: 'Foo' },
-      { age: 6, name: 'Foo' }
-    ).pipe(
-      distinctUntilKeyChanged('name')
-    )
-    .subscribe(x => console.log(x));
-    
-    // displays:
-    // { age: 4, name: 'Foo' }
-    // { age: 7, name: 'Bar' }
-    // { age: 5, name: 'Foo' }
+import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject, distinctUntilKeyChanged, from } from 'rxjs';
+import { OF_DISTINCT_UNTIL_KEY_SECTION } from '../filtering.data';
+
+@Component({
+	selector:    'app-from',
+	templateUrl: './distinct-until-key.component.html',
+})
+
+export class DistinctUntilKeyComponent implements OnInit {
+
+	public DISTINCT_UNTIL_KEY_SECTION = OF_DISTINCT_UNTIL_KEY_SECTION;
+
+	public outputArrayValue = '';
+	public enteredText = '';
+	private initialValues = [
+		{name: 'John', age: 25},
+		{name: 'John', age: 30},
+		{name: 'Jane', age: 30},
+		{name: 'Jane', age: 35}
+	];
+	private currentValues = [];
+
+	private source$ = new BehaviorSubject<{ name: string, age: number }[]>(this.initialValues);
+	public tsArrayCode = getTsFromArrayCode();
+	public htmlArrayCode = getHTMLFromArrayCode();
+
+	public ngOnInit(): void {
+		this.source$.subscribe(value => {
+			this.enteredText = \`Name: \${value[0].name} - Age: \${value[0].age}\n\` + this.enteredText;
+			this.currentValues.unshift(value[0]);
+		})
+		this.enteredText = this.initialValues.map(value => \`Name: \${value.name} - Age: \${value.age}\`)
+			.join('\n');
+		this.currentValues.push(...this.initialValues);
+	}
+
+	public restart(): void {
+		this.enteredText = this.initialValues.map(value => \`Name: \${value.name} - Age: \${value.age}\`)
+			.join('\n');
+		this.currentValues.length = 0;
+		this.outputArrayValue = '';
+		this.currentValues.push(...this.initialValues);
+	}
+
+	public doSendSourceObservable(): void {
+		if (this.enteredText) {
+			this.outputArrayValue = '';
+			from(this.currentValues)
+				.pipe(distinctUntilKeyChanged('name', (prev, curr) => prev.toLowerCase() === curr.toLowerCase()))
+				.subscribe(
+					{
+						next: value => {
+							console.log(value);
+							this.outputArrayValue += \`Name: \${value.name} - Age: \${value.age}\n\`;
+						}
+					}
+				);
+		}
+	}
+
+	public doAddSourceData(): void {
+		this.source$.next([{name: \`Name \${Math.floor(Math.random() * 100) + 1}\`, age: Math.floor(Math.random() * 100) + 1}])
+	}
+
+}
 `;
 
 const getHTMLFromArrayCode = (): string => `

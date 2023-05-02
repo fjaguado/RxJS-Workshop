@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { debounceTime, distinctUntilChanged, from, fromEvent, map, Observable, of, Subscription } from 'rxjs';
-import { OF_DEBOUNCE_TIME_SECTION, OF_DISTINCT_UNTIL_SECTION } from '../filtering.data';
+import { Component } from '@angular/core';
+import { distinctUntilChanged, from, of } from 'rxjs';
+import { OF_DISTINCT_UNTIL_SECTION } from '../filtering.data';
 
 @Component({
 	selector:    'app-from',
@@ -39,23 +39,45 @@ export class DistinctUntilComponent {
 }
 
 const getTsFromArrayCode = (): string => `
-  // RxJS v6+
-    import { fromEvent } from 'rxjs';
-    import { debounceTime, map } from 'rxjs/operators';
+import { Component } from '@angular/core';
+import { distinctUntilChanged, from, of } from 'rxjs';
+import { OF_DISTINCT_UNTIL_SECTION } from '../filtering.data';
 
-    // elem ref
-    const searchBox = document.getElementById('search');
+@Component({
+	selector:    'app-from',
+	templateUrl: './distinct-until.component.html',
+})
+export class DistinctUntilComponent {
 
-    // streams
-    const keyup$ = fromEvent(searchBox, 'keyup');
+	public DISTINCT_UNTIL_SECTION = OF_DISTINCT_UNTIL_SECTION;
 
-    // wait .5s between keyups to emit current value
-    keyup$
-      .pipe(
-        map((i: any) => i.currentTarget.value),
-        debounceTime(500)
-      )
-      .subscribe(console.log);
+	public outputArrayValue = '';
+	public enteredText = '1, 1, 2, 2, 3, 3, 4';
+	public tsArrayCode = getTsFromArrayCode();
+	public htmlArrayCode = getHTMLFromArrayCode();
+
+	public restart(): void {
+		this.enteredText = '1, 1, 2, 2, 3, 3, 4';
+		this.outputArrayValue = '';
+	}
+
+	public doSendSourceObservable(): void {
+		if (this.enteredText) {
+			const enteredText$ = from(this.enteredText.split(',').map(value => value.trim()));
+			enteredText$.pipe(distinctUntilChanged()).subscribe(
+				{
+					next: value => {
+						console.log(value);
+						this.outputArrayValue += (this.outputArrayValue.length > 0 ? ', ': '') + value;
+					}
+				}
+			);
+			const source$ = of(1, 1, 2, 2, 3, 3, 3, 4, 4);
+
+			source$.pipe(distinctUntilChanged()).subscribe(console.log);
+		}
+	}
+}
 `;
 
 const getHTMLFromArrayCode = (): string => `
