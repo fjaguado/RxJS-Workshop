@@ -61,12 +61,10 @@ export const OF_DISTINCT_UNTIL_SECTION: SECTION[] = [
       </ul>
     </p>
     <p>
-      When the second parameter (keySelector) is provided, the behavior changes:
+      When a function parameter is provided, the behavior changes:
       <ul>
-        <li>It will always emit the first value from the source.</li>
-        <li>The keySelector will be run against all values, including the first value.</li>
-        <li>For all values after the first, the selected key will be compared against the key selected from the previously emitted value using the comparator.</li>
-        <li>If the keys are determined to be unequal by this check, the value (not the key), is emitted and the selected key from that value is saved for future comparisons against other keys.</li>
+        <li>It will be used as a custom equality check function.</li>
+        <li>This function will be called with two values, the previous and the current value, and should return a boolean indicating whether they are equal or not.</li>       
        </ul>
     </p>
   `,
