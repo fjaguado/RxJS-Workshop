@@ -1,0 +1,72 @@
+<div class="d-flex row">
+    <app-info-section
+            [selectedData]="CATCH_ERROR_SECTION[0]"
+    ></app-info-section>
+    <div class="d-flex column align-items-center">
+        <app-imported-content
+                class="col-6"
+                [imgSrc]="'https://rxjs.dev/assets/images/marble-diagrams/catch.png'"
+        ></app-imported-content>
+    </div>
+    <app-info-section
+            [selectedData]="CATCH_ERROR_SECTION[1]"
+    ></app-info-section>
+    <div class="mb-4">
+        <app-info-section
+                [selectedData]="CATCH_ERROR_SECTION[2]"
+        ></app-info-section>
+        <div class="d-flex pt-3 column gap-3">
+            <div class="col-6">
+                <div class="form-text">CatchError Operator</div>
+                <div class="input-group align-items-center">
+                    <input
+                            type="text"
+                            class="form-control"
+                            [(ngModel)]="enteredText"
+                    />
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-text">Output:</div>
+                <div class="input-group mb-3">
+          <textarea
+                  class="form-control"
+                  disabled
+                  value="{{ sentArrayValue.toString() }}"
+                  style="height: 170px"
+          ></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center p-3">
+            <button
+                    class="btn btn-outline-secondary mx-3"
+                    type="button"
+                    (click)="doSendArrayValueWithoutCatchError()"
+            >
+                Send without catchError!
+            </button>
+            <button
+                    class="btn btn-outline-secondary mx-3"
+                    type="button"
+                    (click)="doSendArrayValueWithCatchError()"
+            >
+                Send with catchError!
+            </button>
+        </div>
+        <div class="d-flex justify-content-center py-4 gap-3">
+            <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    (click)="restartArrayOperator()"
+            >
+                Restart operator
+            </button>
+        </div>
+        <app-code-tabs
+                [tsCode]="tsArrayCode"
+                [htmlCode]="htmlArrayCode"
+                [tabID]="'fromArray'"
+        ></app-code-tabs>
+    </div>
+</div>

@@ -290,11 +290,11 @@ const getSubjectHTMLCode = (): string => `
       from each subscription.
     </p>
     <p>
-      Last but not least, if we <u>unsubscribe from the Subject</u>, we're not
+      Last but not least, if we <u>unsubscribe from the Subject</u>, we are not
       going to be able to receive any new value sent by the Subject's next()
       method and
       <b
-        >we're not going to be able to resubscribe to this Subject because we've
+        >we are not going to be able to resubscribe to this Subject because we've
         already unsubscribed from it</b
       >.
     </p>

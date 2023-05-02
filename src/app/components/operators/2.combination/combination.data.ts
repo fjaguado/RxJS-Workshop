@@ -123,7 +123,7 @@ export const CONCAT_SECTION: SECTION[] = [
     title: 'Example with strings',
     body: `
     <p>
-      In this case, when we click on the "Concat!" button, all three observer will try to emit their values, but they will have to wait a specified time until they are able to emit a value. As we're using the concat operator, all values are going to be sent in an <b>ordered</b> sequence.
+      In this case, when we click on the "Concat!" button, all three observer will try to emit their values, but they will have to wait a specified time until they are able to emit a value. As we are using the concat operator, all values are going to be sent in an <b>ordered</b> sequence.
       <ol>
         <li>
           After two seconds, we'll receive the first observer's value.
@@ -161,7 +161,7 @@ export const MERGE_SECTION: SECTION[] = [
     title: 'Example with strings',
     body: `
     <p>
-      In this case, when we click on the "Merge!" button, all three observer will try to emit their values, but they will have to wait a specified time until they are able to emit a value. As we're using the merge operator, all values are going to be sent in an <b>unordered</b> sequence.
+      In this case, when we click on the "Merge!" button, all three observer will try to emit their values, but they will have to wait a specified time until they are able to emit a value. As we are using the merge operator, all values are going to be sent in an <b>unordered</b> sequence.
       <ol>
         <li>
           After two seconds, we'll receive the first observer's value.

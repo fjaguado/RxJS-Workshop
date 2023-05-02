@@ -84,7 +84,7 @@ export const OBSERVABLE_SECTION: SECTION[] = [
   {
     title: 'Observables are composable',
     body: `
-    Observables can be composed with higher-order combinators (switchMap, concatMap, exhaustMap, etc.), so we're able to, for example, concatenate two streams of data.
+    Observables can be composed with higher-order combinators (switchMap, concatMap, exhaustMap, etc.), so we are able to, for example, concatenate two streams of data.
     `,
   },
   {

@@ -218,6 +218,11 @@ export class SideNavbarComponent {
           isSelectable: true,
         },
         {
+          title: 'mergeMap',
+          url: ROUTES.MERGE_MAP,
+          isSelectable: true,
+        },
+        {
           title: 'exhaustMap',
           url: ROUTES.EXHAUST_MAP,
           isSelectable: true,

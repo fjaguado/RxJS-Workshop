@@ -38,6 +38,7 @@ export enum ROUTES {
   CONCAT_MAP = 'concat-map',
   EXHAUST_MAP = 'exhaust-map',
   SWITCH_MAP = 'switch-map',
+  MERGE_MAP = 'merge-map',
   TAP = 'tap',
   FINALIZE = 'finalize',
 }

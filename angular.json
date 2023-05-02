@@ -37,6 +37,13 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "development": {
+              "optimization": false,
+              "outputHashing": "none",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": true
             }
           }
         },
@@ -47,7 +54,15 @@
           },
           "configurations": {
             "production": {
+              "optimization": false,
               "browserTarget": "demo:build:production"
+            },
+            "development": {
+              "optimization": false,
+              "outputHashing": "none",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": true
             }
           }
         },

@@ -120,8 +120,8 @@ export const SUBJECT_SECTION: SECTION[] = [
     </p>
     <p>
       In this case, when we try to send a new value with the left input, nothing
-      is going to happen because we're not subscribed to the Subject. Once we
-      hit the <b>Open subscriptions</b> button, we're going to be able to listen
+      is going to happen because we are not subscribed to the Subject. Once we
+      hit the <b>Open subscriptions</b> button, we are going to be able to listen
       to what the Subject is emitting.
     </p>
     <p>
@@ -129,12 +129,12 @@ export const SUBJECT_SECTION: SECTION[] = [
       <b
         >Subjects don't have an initial value and don't return the current value
       </b>
-      in the moment that we're subscribing to it, they are going to receive only
+      in the moment that we are subscribing to it, they are going to receive only
       values sent by the <b>next()</b> method <u>while they're subscribed</u>.
     </p>
     <p>
-      This is why if we sent a value while we're not subscribed and later we
-      subscribe, we're not going to receive anything until we open the
+      This is why if we sent a value while we are not subscribed and later we
+      subscribe, we are not going to receive anything until we open the
       subscription and send a new value.
     </p>
     `,

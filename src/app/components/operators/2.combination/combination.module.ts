@@ -31,4 +31,4 @@ const MODULES = [
   imports: [...MODULES],
   declarations: [...COMPONENTS],
 })
-export class CombinationModule {}
+export class CombinationModule { }

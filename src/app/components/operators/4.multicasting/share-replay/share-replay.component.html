@@ -1,0 +1,46 @@
+<div class="d-flex row">
+  <app-info-section
+    [selectedData]="SHARE_REPLAY_SECTION[0]"
+  ></app-info-section>
+  <app-info-section
+    [selectedData]="SHARE_REPLAY_SECTION[1]"
+  ></app-info-section>
+  <div class="mb-4">
+    <app-info-section
+      [selectedData]="SHARE_REPLAY_SECTION[2]"
+    ></app-info-section>
+    <div class="d-flex pt-3 column gap-3">
+      <div class="col-6">
+        <div class="form-text">ShareReplay Operator</div>
+        <div class="d-flex justify-content-center p-3">
+          <button
+                  class="btn btn-outline-secondary mx-3"
+                  type="button"
+                  (click)="startProcess()"
+                  [disabled]="processStarted"
+          >
+            Start!
+          </button>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-text">Output:</div>
+        <div class="input-group mb-3">
+          <textarea
+            type="text"
+            class="form-control"
+            disabled
+            [ngModel]="sentArrayValue"
+            style="height: 170px"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <app-code-tabs
+      [tsCode]="tsArrayCode"
+      [htmlCode]="htmlArrayCode"
+      [tabID]="'fromArray'"
+    ></app-code-tabs>
+  </div>
+</div>

@@ -57,7 +57,7 @@ export const OF_CREATION_SECTION: SECTION[] = [
     title: '',
     body: `
     <p>
-      In this case, we're simply sending a string as a stream of data.
+      In this case, we are simply sending a string as a stream of data.
     </p>
     `,
   },
@@ -105,7 +105,7 @@ export const FROM_CREATION_SECTION: SECTION[] = [
     title: 'Array example',
     body: `
     <p>
-      In this case, we're transforming an array of data into an Observable stream that will send each value of the array as an Observable.
+      In this case, we are transforming an array of data into an Observable stream that will send each value of the array as an Observable.
     </p>
     `,
   },
@@ -113,7 +113,7 @@ export const FROM_CREATION_SECTION: SECTION[] = [
     title: 'Promise example',
     body: `
     <p>
-      In this case, we're transforming a Promise into an Observable stream that will send each value of the Promise as an Observable. The Promise is created thanks to the Javascript method fetch() that will return a Promise.
+      In this case, we are transforming a Promise into an Observable stream that will send each value of the Promise as an Observable. The Promise is created thanks to the Javascript method fetch() that will return a Promise.
     </p>
     `,
   },
