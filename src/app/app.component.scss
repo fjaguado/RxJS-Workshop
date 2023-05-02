@@ -1,0 +1,25 @@
+.menu-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ccc;
+  }
+  
+  .menu-left {
+    position: fixed;
+    top: 76px; /* height of the top menu */
+    left: 0;
+    width: 250px;
+    height: calc(100% - 76px); /* minus the height of the top menu */
+    background-color: #eee;
+  }
+  
+  .content {
+    position: absolute;
+    top: 76px; /* height of the top menu */
+    left: 250px; /* width of the left menu */
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+  }
